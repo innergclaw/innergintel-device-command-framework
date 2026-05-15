@@ -1,0 +1,77 @@
+ecosystem: InnerG Intel
+version: 0.1.0
+updated: 2026-05-15
+
+devices:
+  iphone:
+    label: iPhone
+    role: Command Deck
+    primary_uses:
+      - Telegram approvals and updates
+      - Client messages
+      - Mobile screenshots
+      - Quick voice/text capture
+      - Sensitive action confirmation
+    avoid:
+      - Long code edits
+      - Large file organization
+      - Complex GitHub operations
+
+  macbook_primary:
+    label: MacBook 1
+    role: Build Studio
+    primary_uses:
+      - Website and demo builds
+      - Codex coding sessions
+      - Git commits and pushes
+      - Browser visual QA
+      - Client asset handling
+    avoid:
+      - Becoming the only place where notes live
+
+  macbook_secondary:
+    label: MacBook 2
+    role: Ops / Review Node
+    primary_uses:
+      - Testing deployed sites
+      - Research and documentation
+      - Admin dashboards
+      - Finance checks
+      - Remote control support
+    avoid:
+      - Editing the same files as MacBook 1 at the same time without Git sync
+
+services:
+  github:
+    role: Source of Truth
+    use_for:
+      - Repositories
+      - Pages deploys
+      - Codex skill products
+      - Project history
+
+  telegram:
+    role: Command Bus
+    use_for:
+      - Notifications
+      - Finance reports
+      - Business updates
+      - Manual approval reminders
+
+  codex:
+    role: Agent Layer
+    use_for:
+      - Build
+      - Research
+      - Verify
+      - Deploy
+      - Summarize
+
+decision_rules:
+  build: MacBook 1
+  review: MacBook 2 or iPhone
+  approve_sensitive_action: iPhone or active Mac
+  notify: Telegram
+  source_of_truth: GitHub
+  operating_docs: InnerG Intel framework
+

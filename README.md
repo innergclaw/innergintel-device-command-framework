@@ -1,0 +1,81 @@
+# InnerG Intel Device Command Framework
+
+A practical operating framework for running the InnerG Intel ecosystem across two MacBooks and an iPhone.
+
+The goal is simple: know where to go for what, which device should own which kind of work, and how Codex, Telegram, GitHub, and local workspaces connect without everything becoming scattered.
+
+## Core Idea
+
+InnerG Intel runs like a small command network:
+
+- **iPhone** is the command deck.
+- **MacBook 1** is the primary build studio.
+- **MacBook 2** is the secondary operator and review machine.
+- **GitHub** is the source of truth.
+- **Telegram** is the mobile command bus.
+- **Codex** is the agent layer that can move between planning, building, checking, and reporting.
+
+## Device Roles
+
+| Device | Role | Use It For |
+| --- | --- | --- |
+| iPhone | Command Deck | Telegram approvals, quick prompts, checking updates, client messages, mobile screenshots |
+| MacBook 1 | Build Studio | Main coding, websites, client demos, GitHub pushes, creative production |
+| MacBook 2 | Ops / Review Node | Testing, second-screen research, admin dashboards, finance checks, remote control |
+| GitHub | Source of Truth | Repos, demos, skills, docs, issue history, deploys |
+| Telegram | Command Bus | Business updates, finance reports, reminders, quick execution requests |
+| Codex | Agent Layer | Build, edit, research, summarize, automate, deploy, report |
+
+## Where To Go For What
+
+| Need | Start Here | Why |
+| --- | --- | --- |
+| Build a website/demo | MacBook 1 + Codex | Best for file editing, browser checks, GitHub deploys |
+| Review a site on mobile | iPhone | Real mobile view, screenshots, client-like experience |
+| Send business/finance updates | Telegram | Fastest command and notification layer |
+| Manage repos and skills | GitHub | Permanent source of truth |
+| Run second checks | MacBook 2 | Keeps primary build flow clean |
+| Approve sensitive actions | iPhone or active Mac | Best place for human confirmation |
+| Store operating rules | This framework | Prevents confusion across devices |
+
+## Operating Principle
+
+No device should do everything.
+
+Each device gets a lane:
+
+1. **Capture**: iPhone
+2. **Build**: MacBook 1
+3. **Verify**: MacBook 2 or iPhone
+4. **Deploy**: GitHub
+5. **Notify**: Telegram
+6. **Document**: InnerG Intel framework
+
+## Folder Map
+
+```text
+innergintel-device-command-framework/
+├── README.md
+├── config/
+│   └── devices.yml
+├── docs/
+│   ├── command-map.md
+│   ├── operating-rules.md
+│   └── workflows.md
+├── dashboard/
+│   └── index.html
+└── scripts/
+    └── print-command-map.py
+```
+
+## First Workflows
+
+1. Client website build
+2. Telegram finance report
+3. Codex skill product build
+4. Domain + GitHub Pages deploy
+5. Mobile review loop
+6. Sensitive action approval loop
+
+See [docs/workflows.md](docs/workflows.md).
+
