@@ -13,6 +13,7 @@ InnerG Intel runs like a small command network:
 - **MacBook 2** is the secondary operator and review machine.
 - **GitHub** is the source of truth.
 - **Telegram** is the mobile command bus.
+- **Telegram Ops Update Channel** is `-1003997964845`.
 - **Codex** is the agent layer that can move between planning, building, checking, and reporting.
 
 ## Device Roles
@@ -33,6 +34,7 @@ InnerG Intel runs like a small command network:
 | Build a website/demo | MacBook 1 + Codex | Best for file editing, browser checks, GitHub deploys |
 | Review a site on mobile | iPhone | Real mobile view, screenshots, client-like experience |
 | Send business/finance updates | Telegram | Fastest command and notification layer |
+| Send ops updates | Telegram channel `-1003997964845` | Official InnerG Intel ops update lane |
 | Manage repos and skills | GitHub | Permanent source of truth |
 | Run second checks | MacBook 2 | Keeps primary build flow clean |
 | Approve sensitive actions | iPhone or active Mac | Best place for human confirmation |
@@ -78,4 +80,3 @@ innergintel-device-command-framework/
 6. Sensitive action approval loop
 
 See [docs/workflows.md](docs/workflows.md).
-

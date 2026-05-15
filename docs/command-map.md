@@ -15,6 +15,7 @@ Use this when deciding where a task belongs.
 | Long client proposal | MacBook 1 |
 | Finance holdings check | MacBook 2 or Codex |
 | Telegram report | Telegram |
+| Ops update channel | Telegram `-1003997964845` |
 | Nightly insight | Codex + Telegram |
 | Sensitive approvals | Human on iPhone or active Mac |
 | Codex skill development | MacBook 1 |
@@ -32,4 +33,3 @@ These actions require Nasir to approve directly:
 - sending client-facing messages that commit price, deadline, or legal terms
 
 Codex can prepare the action, write the command, summarize the risk, and log the result.
-

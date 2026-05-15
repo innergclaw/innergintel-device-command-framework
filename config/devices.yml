@@ -52,11 +52,14 @@ services:
 
   telegram:
     role: Command Bus
+    ops_update_channel_id: "-1003997964845"
+    ops_update_channel_name: InnerG Intel Ops Update Channel
     use_for:
       - Notifications
       - Finance reports
       - Business updates
       - Manual approval reminders
+      - Ops update channel posts
 
   codex:
     role: Agent Layer
@@ -74,4 +77,3 @@ decision_rules:
   notify: Telegram
   source_of_truth: GitHub
   operating_docs: InnerG Intel framework
-

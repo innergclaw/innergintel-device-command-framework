@@ -16,6 +16,12 @@ Use GitHub for:
 
 Telegram is for updates, reports, and quick action prompts.
 
+The official InnerG Intel ops update channel is:
+
+```text
+-1003997964845
+```
+
 Use Telegram for:
 
 - nightly business notes
@@ -23,6 +29,7 @@ Use Telegram for:
 - manual trade reminders
 - client lead summaries
 - "what changed?" reports
+- ops update posts
 
 ## 3. iPhone Is For Approval And Capture
 
@@ -72,4 +79,3 @@ Sensitive actions include:
 - DNS changes
 - repo deletion
 - public launch announcements
-

@@ -36,6 +36,14 @@
 4. Flag big changes or manual action needed.
 5. Keep approvals human-confirmed.
 
+## Ops Update Channel
+
+1. Summarize what changed.
+2. Keep the update short and action-focused.
+3. Send to Telegram channel `-1003997964845`.
+4. Link the repo, page, or artifact when there is one.
+5. Use this channel for InnerG Intel system updates, not casual chat.
+
 ## Mobile Review Loop
 
 1. Open live URL on iPhone.
@@ -44,4 +52,3 @@
 4. Fix on MacBook 1.
 5. Push.
 6. Re-check on iPhone.
-
