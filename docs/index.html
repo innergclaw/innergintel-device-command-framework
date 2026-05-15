@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnerG Intel Device Command Framework</title>
+  <meta name="description" content="A command framework for running InnerG Intel across two MacBooks, iPhone, Codex, GitHub, and Telegram.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050608;
+      --panel: rgba(255, 255, 255, .075);
+      --panel-2: rgba(255, 255, 255, .115);
+      --text: #f5f7fb;
+      --muted: #aab5c5;
+      --line: rgba(255, 255, 255, .16);
+      --blue: #77d9ff;
+      --green: #64e394;
+      --violet: #c7a6ff;
+      --amber: #ffd27d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(119, 217, 255, .22), transparent 28rem),
+        radial-gradient(circle at 18% 68%, rgba(100, 227, 148, .12), transparent 22rem),
+        linear-gradient(145deg, #030407, #0d1118 56%, #050608);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    header {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 880px;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: .88;
+      letter-spacing: 0;
+    }
+
+    header p {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .network {
+      position: relative;
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: center;
+      margin: 42px 0;
+    }
+
+    .node {
+      min-height: 220px;
+      display: grid;
+      align-content: space-between;
+      gap: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      background: var(--panel);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(16px);
+    }
+
+    .node.core {
+      min-height: 310px;
+      border-color: rgba(119, 217, 255, .42);
+      background:
+        linear-gradient(145deg, rgba(119, 217, 255, .18), rgba(255,255,255,.08)),
+        var(--panel);
+    }
+
+    .node small {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .node h2,
+    .node h3 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: 0;
+    }
+
+    .node p,
+    .rules li {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .status {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(100, 227, 148, .28);
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: var(--green);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(100, 227, 148, .08);
+    }
+
+    .status::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+    }
+
+    .map {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 22px;
+    }
+
+    .panel h2 {
+      margin-bottom: 18px;
+      font-size: clamp(1.8rem, 4vw, 3.1rem);
+      letter-spacing: 0;
+    }
+
+    .routes {
+      display: grid;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+    }
+
+    .route {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 14px;
+      background: rgba(5, 6, 8, .72);
+      padding: 14px;
+    }
+
+    .route strong {
+      color: var(--text);
+    }
+
+    .route span {
+      color: var(--muted);
+    }
+
+    .rules {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .rules li {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .rules li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    @media (max-width: 900px) {
+      .network,
+      .map {
+        grid-template-columns: 1fr;
+      }
+
+      .network {
+        min-height: 0;
+      }
+
+      .route {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">InnerG Intel / Device Command Framework</div>
+      <h1>Know where to go for what.</h1>
+      <p>A simple operating map for running two MacBooks, an iPhone, Codex, GitHub, and Telegram as one connected creative/business system.</p>
+    </header>
+
+    <section class="network" aria-label="Device network">
+      <article class="node">
+        <small>iPhone</small>
+        <h3>Command Deck</h3>
+        <p>Approvals, Telegram, client messages, mobile screenshots, quick capture.</p>
+        <span class="status">Capture</span>
+      </article>
+
+      <article class="node core">
+        <small>InnerG Intel</small>
+        <h2>Codex Agent Layer</h2>
+        <p>Plans, builds, edits, verifies, reports, and routes work between devices and services.</p>
+        <span class="status">Online</span>
+      </article>
+
+      <article class="node">
+        <small>MacBook 2</small>
+        <h3>Ops / Review Node</h3>
+        <p>Second checks, dashboards, finance monitoring, research, and remote-control support.</p>
+        <span class="status">Verify</span>
+      </article>
+
+      <article class="node">
+        <small>MacBook 1</small>
+        <h3>Build Studio</h3>
+        <p>Websites, demos, code, creative production, Git commits, and deploys.</p>
+        <span class="status">Build</span>
+      </article>
+
+      <article class="node">
+        <small>GitHub</small>
+        <h3>Source Of Truth</h3>
+        <p>Repos, Pages deploys, productized skills, project history, and documentation.</p>
+        <span class="status">Deploy</span>
+      </article>
+
+      <article class="node">
+        <small>Telegram</small>
+        <h3>Command Bus</h3>
+        <p>Nightly notes, finance reports, lead updates, reminders, and action prompts.</p>
+        <span class="status">Notify</span>
+      </article>
+    </section>
+
+    <section class="map" aria-label="Routing map">
+      <div class="panel">
+        <h2>Routing Map</h2>
+        <div class="routes">
+          <div class="route"><strong>Build a site</strong><span>MacBook 1 + Codex</span></div>
+          <div class="route"><strong>Check mobile</strong><span>iPhone</span></div>
+          <div class="route"><strong>Review work</strong><span>MacBook 2</span></div>
+          <div class="route"><strong>Push live</strong><span>GitHub</span></div>
+          <div class="route"><strong>Send update</strong><span>Telegram</span></div>
+          <div class="route"><strong>Approve sensitive action</strong><span>Nasir on iPhone or active Mac</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Rules</h2>
+        <ul class="rules">
+          <li>GitHub is the source of truth for projects that matter.</li>
+          <li>Telegram is the command bus for reports and quick updates.</li>
+          <li>MacBook 1 builds. MacBook 2 reviews. iPhone approves and captures.</li>
+          <li>Codex prepares sensitive actions, but Nasir confirms them.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
