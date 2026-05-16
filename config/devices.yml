@@ -70,6 +70,47 @@ services:
       - Deploy
       - Summarize
 
+production_stack:
+  - layer: Frontend
+    lane: MacBook 1 + Codex
+    status: covered
+  - layer: APIs & Backend Logic
+    lane: MacBook 1 + Codex
+    status: planned
+  - layer: Database & Storage
+    lane: GitHub docs + selected backend
+    status: planned
+  - layer: Auth & Permissions
+    lane: Project backend + human approval
+    status: planned
+  - layer: Hosting & Deployment
+    lane: GitHub + MacBook 1
+    status: partially covered
+  - layer: Cloud & Compute
+    lane: GitHub + selected host
+    status: planned
+  - layer: CI/CD & Version Control
+    lane: GitHub + MacBook 1
+    status: partially covered
+  - layer: Security & RLS
+    lane: Codex prepares, Nasir approves
+    status: partially covered
+  - layer: Rate Limiting
+    lane: Backend/API layer
+    status: planned
+  - layer: Caching & CDN
+    lane: Hosting/CDN layer
+    status: planned
+  - layer: Load Balancing & Scaling
+    lane: Cloud/compute layer
+    status: future
+  - layer: Error Tracking & Logs
+    lane: MacBook 2 + hosting tools
+    status: planned
+  - layer: Availability & Recovery
+    lane: MacBook 2 + GitHub
+    status: planned
+
 decision_rules:
   build: MacBook 1
   review: MacBook 2 or iPhone

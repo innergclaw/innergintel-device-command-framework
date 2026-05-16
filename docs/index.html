@@ -214,9 +214,56 @@
       padding-bottom: 0;
     }
 
+    .stack {
+      margin-top: 18px;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+    }
+
+    .stack-layer {
+      display: grid;
+      gap: 8px;
+      min-height: 96px;
+      background: rgba(5, 6, 8, .72);
+      padding: 14px;
+    }
+
+    .stack-layer strong {
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    .stack-layer span {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    .coverage {
+      width: fit-content;
+      border: 1px solid rgba(119, 217, 255, .28);
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: var(--blue);
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(119, 217, 255, .08);
+    }
+
     @media (max-width: 900px) {
       .network,
-      .map {
+      .map,
+      .stack-grid {
         grid-template-columns: 1fr;
       }
 
@@ -303,6 +350,25 @@
           <li>MacBook 1 builds. MacBook 2 reviews. iPhone approves and captures.</li>
           <li>Codex prepares sensitive actions, but Nasir confirms them.</li>
         </ul>
+      </div>
+    </section>
+
+    <section class="panel stack" aria-label="Full-stack production coverage">
+      <h2>Production Stack</h2>
+      <div class="stack-grid">
+        <div class="stack-layer"><strong>Frontend</strong><span>MacBook 1 + Codex build and visual QA lane.</span><em class="coverage">Covered</em></div>
+        <div class="stack-layer"><strong>APIs & Backend Logic</strong><span>Product behavior, integrations, validation, and jobs.</span><em class="coverage">Planned</em></div>
+        <div class="stack-layer"><strong>Database & Storage</strong><span>Schemas, storage rules, backups, and migration history.</span><em class="coverage">Planned</em></div>
+        <div class="stack-layer"><strong>Auth & Permissions</strong><span>Role matrix, session rules, and admin-only workflows.</span><em class="coverage">Planned</em></div>
+        <div class="stack-layer"><strong>Hosting & Deployment</strong><span>GitHub-backed deploy steps, domains, and rollback notes.</span><em class="coverage">Partial</em></div>
+        <div class="stack-layer"><strong>Cloud & Compute</strong><span>Runtime choice, environment variables, and secrets map.</span><em class="coverage">Planned</em></div>
+        <div class="stack-layer"><strong>CI/CD & Version Control</strong><span>Branches, checks, releases, and source of truth.</span><em class="coverage">Partial</em></div>
+        <div class="stack-layer"><strong>Security & RLS</strong><span>Policy review, secret scanning, and human approval.</span><em class="coverage">Partial</em></div>
+        <div class="stack-layer"><strong>Rate Limiting</strong><span>Per-route limits, abuse rules, and webhook protection.</span><em class="coverage">Planned</em></div>
+        <div class="stack-layer"><strong>Caching & CDN</strong><span>Cache rules, asset versioning, and purge process.</span><em class="coverage">Planned</em></div>
+        <div class="stack-layer"><strong>Load Balancing & Scaling</strong><span>Scale thresholds, queues, and autoscaling rules.</span><em class="coverage">Future</em></div>
+        <div class="stack-layer"><strong>Error Tracking & Logs</strong><span>Structured logs, alerts, and MacBook 2 review lane.</span><em class="coverage">Planned</em></div>
+        <div class="stack-layer"><strong>Availability & Recovery</strong><span>Uptime checks, restore tests, and incident notes.</span><em class="coverage">Planned</em></div>
       </div>
     </section>
   </main>

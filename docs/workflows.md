@@ -52,3 +52,14 @@
 4. Fix on MacBook 1.
 5. Push.
 6. Re-check on iPhone.
+
+## Full-Stack Production Coverage Review
+
+1. Start from the repo and live URL.
+2. Check each layer in `docs/production-stack.md`.
+3. Mark each layer as covered, not needed yet, or missing.
+4. Turn missing layers into concrete tasks.
+5. Use MacBook 1 for build fixes.
+6. Use MacBook 2 for verification, logs, dashboards, and recovery checks.
+7. Use iPhone or active Mac for sensitive approval.
+8. Log the final coverage status in the repo.
