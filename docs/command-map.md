@@ -20,6 +20,10 @@ Use this when deciding where a task belongs.
 | Sensitive approvals | Human on iPhone or active Mac |
 | Codex skill development | MacBook 1 |
 | Codex skill testing | MacBook 2 |
+| Production stack review | Codex + MacBook 2 |
+| Security/RLS review | Codex prepares, Nasir approves |
+| Error/log review | MacBook 2 + Codex |
+| Availability/recovery check | MacBook 2 + GitHub |
 
 ## Human Approval Required
 
@@ -33,3 +37,21 @@ These actions require Nasir to approve directly:
 - sending client-facing messages that commit price, deadline, or legal terms
 
 Codex can prepare the action, write the command, summarize the risk, and log the result.
+
+## Production Stack Routing
+
+| Layer | Start Here |
+| --- | --- |
+| Frontend | MacBook 1 + Codex |
+| APIs & Backend Logic | MacBook 1 + Codex |
+| Database & Storage | GitHub docs + selected backend |
+| Auth & Permissions | Codex prepares, human confirms sensitive roles |
+| Hosting & Deployment | GitHub + MacBook 1 |
+| Cloud & Compute | GitHub decision log + selected provider |
+| CI/CD & Version Control | GitHub |
+| Security & RLS | Codex review + Nasir approval |
+| Rate Limiting | Backend/API layer |
+| Caching & CDN | Hosting/CDN layer |
+| Load Balancing & Scaling | Cloud/compute layer |
+| Error Tracking & Logs | MacBook 2 + hosting tools |
+| Availability & Recovery | MacBook 2 + GitHub |

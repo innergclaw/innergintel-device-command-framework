@@ -53,6 +53,28 @@ Each device gets a lane:
 5. **Notify**: Telegram
 6. **Document**: InnerG Intel framework
 
+## Production Coverage
+
+InnerG Intel should cover the full production stack, not just frontend and backend.
+
+| Area | Coverage Goal |
+| --- | --- |
+| Frontend | Build and visually verify the user experience |
+| APIs & Backend Logic | Handle product behavior, integrations, and validation |
+| Database & Storage | Store data safely with documented schemas and backups |
+| Auth & Permissions | Control who can access what |
+| Hosting & Deployment | Ship live apps with repeatable deploy steps |
+| Cloud & Compute | Choose the right runtime for each product |
+| CI/CD & Version Control | Keep releases traceable and reversible |
+| Security & RLS | Protect data, secrets, and privileged actions |
+| Rate Limiting | Prevent abuse and runaway usage |
+| Caching & CDN | Keep apps fast and resilient |
+| Load Balancing & Scaling | Prepare high-traffic systems when needed |
+| Error Tracking & Logs | See failures quickly and debug them |
+| Availability & Recovery | Restore service after incidents |
+
+See [docs/production-stack.md](docs/production-stack.md).
+
 ## Folder Map
 
 ```text
@@ -63,6 +85,7 @@ innergintel-device-command-framework/
 ├── docs/
 │   ├── command-map.md
 │   ├── operating-rules.md
+│   ├── production-stack.md
 │   └── workflows.md
 ├── dashboard/
 │   └── index.html
