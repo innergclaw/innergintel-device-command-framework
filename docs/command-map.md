@@ -24,6 +24,10 @@ Use this when deciding where a task belongs.
 | Security/RLS review | Codex prepares, Nasir approves |
 | Error/log review | MacBook 2 + Codex |
 | Availability/recovery check | MacBook 2 + GitHub |
+| OWNYOURWEB order | Dashboard intake + MacBook 1 |
+| SHOPNASGFX order | Dashboard intake + MacBook 1 |
+| INNERGINTEL project/date/class | Dashboard intake + GitHub |
+| PERSONAL life/family/investment note | Dashboard intake + human review |
 
 ## Human Approval Required
 
@@ -55,3 +59,12 @@ Codex can prepare the action, write the command, summarize the risk, and log the
 | Load Balancing & Scaling | Cloud/compute layer |
 | Error Tracking & Logs | MacBook 2 + hosting tools |
 | Availability & Recovery | MacBook 2 + GitHub |
+
+## Ecosystem Lane Routing
+
+| Lane | Send Here |
+| --- | --- |
+| OWNYOURWEB | website orders, lead forms, client website project boards, domains, launch tasks |
+| SHOPNASGFX | design orders, creative briefs, asset collection, revisions, approvals, final delivery |
+| INNERGINTEL | projects, system details, dates, classes, ecosystem updates, skills, ops reports |
+| PERSONAL | non-work tasks, family notes, private reminders, investments, bills, personal review |

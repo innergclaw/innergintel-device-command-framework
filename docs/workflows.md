@@ -63,3 +63,45 @@
 6. Use MacBook 2 for verification, logs, dashboards, and recovery checks.
 7. Use iPhone or active Mac for sensitive approval.
 8. Log the final coverage status in the repo.
+
+## Ecosystem Intake Routing
+
+1. Capture the request in the dashboard intake.
+2. Assign it to OWNYOURWEB, SHOPNASGFX, INNERGINTEL, or PERSONAL.
+3. Mark the request type: order, form, project, date, update, or private note.
+4. Add due date, priority, links, files, and approval requirements.
+5. Convert the intake into a project card when it needs multiple steps.
+6. Keep public/client work separate from private personal notes.
+7. Send sensitive actions to human approval before execution.
+8. Log the status change after the task is done.
+
+## OWNYOURWEB Order Flow
+
+1. Collect website intake details.
+2. Review offer, pages, goal, budget, and launch target.
+3. Build project board with copy, design, domain, hosting, QA, and launch tasks.
+4. Build on MacBook 1 with Codex.
+5. Verify on MacBook 2 and iPhone.
+6. Send client update and delivery notes.
+
+## SHOPNASGFX Order Flow
+
+1. Collect design brief and assets.
+2. Confirm design type, platform, text, style, and deadline.
+3. Move through draft, revision, approval, and delivery.
+4. Store final delivery reference and client update.
+
+## INNERGINTEL System Flow
+
+1. Capture project, class, date, or update.
+2. Link related repo, document, or dashboard.
+3. Define next action and owner.
+4. Update the operating docs when the system changes.
+5. Send an ops update when it affects the ecosystem.
+
+## PERSONAL Review Flow
+
+1. Capture private life, family, investment, or reminder note.
+2. Keep sensitive details out of public dashboard views.
+3. Flag human approval for financial, legal, medical, or private actions.
+4. Review reminders from iPhone or active Mac.

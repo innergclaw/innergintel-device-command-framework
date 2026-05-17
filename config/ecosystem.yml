@@ -1,0 +1,133 @@
+ecosystem: InnerG Intel Command OS
+version: 0.2.0
+updated: 2026-05-16
+
+lanes:
+  ownyourweb:
+    label: OWNYOURWEB
+    role: Website Business Operations
+    accent: gold
+    owns:
+      - website orders
+      - project request forms
+      - client project boards
+      - launch checklists
+      - domain and hosting notes
+      - delivery updates
+    forms:
+      - website intake
+      - revision request
+      - launch approval
+    project_statuses:
+      - capture
+      - review
+      - quote
+      - build
+      - verify
+      - deploy
+      - handoff
+
+  shopnasgfx:
+    label: SHOPNASGFX
+    role: Creative Design Operations
+    accent: red
+    owns:
+      - design orders
+      - creative briefs
+      - asset collection
+      - draft approvals
+      - revision rounds
+      - final delivery
+    forms:
+      - design brief
+      - asset upload
+      - revision request
+      - approval
+    project_statuses:
+      - capture
+      - assets needed
+      - draft
+      - revision
+      - approved
+      - delivered
+
+  innergintel:
+    label: INNERGINTEL
+    role: System Project Management
+    accent: blue
+    owns:
+      - project management
+      - important details
+      - dates
+      - classes
+      - ecosystem updates
+      - skills and automation notes
+    forms:
+      - system update
+      - class note
+      - project brief
+      - ops report
+    project_statuses:
+      - capture
+      - plan
+      - build
+      - verify
+      - log
+      - notify
+
+  personal:
+    label: PERSONAL
+    role: Private Life Operations
+    accent: green
+    owns:
+      - life admin
+      - family notes
+      - private reminders
+      - appointments
+      - investment watchlists
+      - bills and personal finance notes
+    forms:
+      - private note
+      - family reminder
+      - investment watch
+      - life admin task
+    project_statuses:
+      - capture
+      - review
+      - do
+      - waiting
+      - done
+
+shared_objects:
+  - contact
+  - intake
+  - order
+  - project
+  - task
+  - date
+  - file
+  - update
+  - approval
+
+security_rules:
+  public_dashboard:
+    show:
+      - lane
+      - status
+      - category
+      - non-sensitive title
+      - next action
+    avoid:
+      - credentials
+      - payment details
+      - private family details
+      - full investment account details
+      - legal or medical details
+  human_approval_required:
+    - financial transactions
+    - investment trades
+    - payment links
+    - DNS changes
+    - public launch announcements
+    - client-facing commitments
+

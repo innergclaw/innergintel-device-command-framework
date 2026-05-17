@@ -4,6 +4,19 @@ A practical operating framework for running the InnerG Intel ecosystem across tw
 
 The goal is simple: know where to go for what, which device should own which kind of work, and how Codex, Telegram, GitHub, and local workspaces connect without everything becoming scattered.
 
+## Command OS Lanes
+
+The ecosystem now runs through four dashboard lanes:
+
+| Lane | Owns | Core Need |
+| --- | --- | --- |
+| **OWNYOURWEB** | website orders, forms, project boards, launches | turn client website requests into delivered web systems |
+| **SHOPNASGFX** | design orders, briefs, assets, approvals, deliveries | move creative jobs from request to final files |
+| **INNERGINTEL** | projects, important details, dates, classes, ecosystem updates | keep the operating system organized and current |
+| **PERSONAL** | life admin, family, reminders, investments, private notes | keep non-work priorities separate but visible |
+
+See [docs/ecosystem-map.md](docs/ecosystem-map.md).
+
 ## Core Idea
 
 InnerG Intel runs like a small command network:
@@ -81,9 +94,11 @@ See [docs/production-stack.md](docs/production-stack.md).
 innergintel-device-command-framework/
 ├── README.md
 ├── config/
-│   └── devices.yml
+│   ├── devices.yml
+│   └── ecosystem.yml
 ├── docs/
 │   ├── command-map.md
+│   ├── ecosystem-map.md
 │   ├── operating-rules.md
 │   ├── production-stack.md
 │   └── workflows.md
@@ -101,5 +116,6 @@ innergintel-device-command-framework/
 4. Domain + GitHub Pages deploy
 5. Mobile review loop
 6. Sensitive action approval loop
+7. Ecosystem intake and project routing
 
 See [docs/workflows.md](docs/workflows.md).

@@ -3,55 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InnerG Intel Device Command Framework</title>
-  <meta name="description" content="A command framework for running InnerG Intel across two MacBooks, iPhone, Codex, GitHub, and Telegram.">
+  <title>InnerG Intel Command OS</title>
+  <meta name="description" content="A Jarvis-style command dashboard for OWNYOURWEB, SHOPNASGFX, INNERGINTEL, and personal operations.">
   <style>
     :root {
       color-scheme: dark;
-      --bg: #050608;
-      --panel: rgba(255, 255, 255, .075);
-      --panel-2: rgba(255, 255, 255, .115);
-      --text: #f5f7fb;
-      --muted: #aab5c5;
-      --line: rgba(255, 255, 255, .16);
-      --blue: #77d9ff;
-      --green: #64e394;
-      --violet: #c7a6ff;
-      --amber: #ffd27d;
+      --bg: #050505;
+      --panel: #101010;
+      --panel-2: #171717;
+      --panel-3: #202020;
+      --text: #f7f4ec;
+      --muted: #ada79a;
+      --line: #34312b;
+      --gold: #f5b51b;
+      --blue: #3190ff;
+      --red: #f24530;
+      --green: #55d66b;
+      --teal: #35d4c7;
+      --violet: #9b5cff;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
       color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at 50% 18%, rgba(119, 217, 255, .22), transparent 28rem),
-        radial-gradient(circle at 18% 68%, rgba(100, 227, 148, .12), transparent 22rem),
-        linear-gradient(145deg, #030407, #0d1118 56%, #050608);
+        linear-gradient(rgba(245, 181, 27, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(49, 144, 255, .06) 1px, transparent 1px),
+        linear-gradient(135deg, #050505 0%, #0d0c0a 44%, #050505 100%);
+      background-size: 42px 42px, 42px 42px, auto;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     main {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1440px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 48px 0;
+      padding: 24px 0 48px;
     }
 
-    header {
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
       display: grid;
+      grid-template-columns: auto 1fr auto;
       gap: 16px;
-      margin-bottom: 34px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(5, 5, 5, .88);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: .86rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--gold);
+      border-radius: 6px;
+      color: var(--gold);
+      font-size: .82rem;
+      font-weight: 950;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a,
+    .action {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px 11px;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      background: #0a0a0a;
+    }
+
+    nav a:hover,
+    .action:hover {
+      color: var(--text);
+      border-color: var(--gold);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+      gap: 18px;
+      align-items: stretch;
+      padding: 30px 0 18px;
+    }
+
+    .hero-copy,
+    .command-panel,
+    .panel,
+    .lane-card,
+    .task,
+    .field,
+    .timeline-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(16, 16, 16, .92);
+    }
+
+    .hero-copy {
+      display: grid;
+      align-content: space-between;
+      min-height: 470px;
+      padding: clamp(22px, 4vw, 42px);
+      overflow: hidden;
     }
 
     .eyebrow {
-      color: var(--blue);
+      color: var(--gold);
       font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .18em;
+      font-weight: 950;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
@@ -63,314 +170,786 @@
     }
 
     h1 {
-      max-width: 880px;
-      font-size: clamp(3rem, 8vw, 6.8rem);
-      line-height: .88;
+      max-width: 860px;
+      margin-top: 20px;
+      font-size: clamp(3.2rem, 9vw, 8.2rem);
+      line-height: .82;
       letter-spacing: 0;
-    }
-
-    header p {
-      max-width: 690px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.7;
-    }
-
-    .network {
-      position: relative;
-      min-height: 560px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      align-items: center;
-      margin: 42px 0;
-    }
-
-    .node {
-      min-height: 220px;
-      display: grid;
-      align-content: space-between;
-      gap: 24px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 22px;
-      background: var(--panel);
-      box-shadow: 0 28px 90px rgba(0, 0, 0, .28);
-      backdrop-filter: blur(16px);
-    }
-
-    .node.core {
-      min-height: 310px;
-      border-color: rgba(119, 217, 255, .42);
-      background:
-        linear-gradient(145deg, rgba(119, 217, 255, .18), rgba(255,255,255,.08)),
-        var(--panel);
-    }
-
-    .node small {
-      color: var(--muted);
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
-    .node h2,
-    .node h3 {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      letter-spacing: 0;
-    }
-
-    .node p,
-    .rules li {
+    .hero-copy p {
+      max-width: 720px;
       color: var(--muted);
-      line-height: 1.55;
+      font-size: 1.02rem;
+      line-height: 1.65;
     }
 
-    .status {
-      width: fit-content;
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+      background: #0b0b0b;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .command-panel {
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .panel-head h2,
+    .panel h2 {
+      font-size: clamp(1.65rem, 3vw, 3.1rem);
+      line-height: .95;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .signal {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(100, 227, 148, .28);
+      width: fit-content;
+      border: 1px solid rgba(85, 214, 107, .44);
       border-radius: 999px;
       padding: 7px 10px;
       color: var(--green);
-      font-size: .76rem;
-      font-weight: 900;
+      font-size: .68rem;
+      font-weight: 950;
       letter-spacing: .1em;
       text-transform: uppercase;
-      background: rgba(100, 227, 148, .08);
+      background: rgba(85, 214, 107, .08);
     }
 
-    .status::before {
+    .signal::before {
       content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: var(--green);
     }
 
-    .map {
+    .lane-switcher {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .lane-button {
+      min-height: 64px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      color: var(--text);
+      text-align: left;
+      background: #0b0b0b;
+    }
+
+    .lane-button strong {
+      display: block;
+      font-size: .86rem;
+      font-weight: 950;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .lane-button span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.35;
+    }
+
+    .lane-button.active {
+      border-color: var(--lane);
+      box-shadow: inset 0 0 0 1px var(--lane);
+    }
+
+    .active-readout {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--lane) 18%, transparent), transparent 55%),
+        #0c0c0c;
+    }
+
+    .active-readout small,
+    .lane-card small,
+    .task small,
+    label,
+    .timeline-item small {
+      color: var(--muted);
+      font-size: .7rem;
+      font-style: normal;
+      font-weight: 950;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .active-readout h2 {
+      margin: 8px 0 10px;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: .9;
+      text-transform: uppercase;
+    }
+
+    .active-readout p,
+    .task p,
+    .lane-card p,
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.52;
+    }
+
+    .readout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
       margin-top: 18px;
     }
 
-    .panel {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      padding: 22px;
+    .readout-grid div {
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 6px;
+      padding: 11px;
+      background: rgba(0, 0, 0, .24);
     }
 
-    .panel h2 {
-      margin-bottom: 18px;
-      font-size: clamp(1.8rem, 4vw, 3.1rem);
-      letter-spacing: 0;
+    .readout-grid strong {
+      display: block;
+      margin-top: 6px;
+      font-size: .92rem;
     }
 
-    .routes {
+    .section-grid {
       display: grid;
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--line);
-    }
-
-    .route {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 14px;
-      background: rgba(5, 6, 8, .72);
-      padding: 14px;
-    }
-
-    .route strong {
-      color: var(--text);
-    }
-
-    .route span {
-      color: var(--muted);
-    }
-
-    .rules {
-      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
+      margin-top: 18px;
+    }
+
+    .lane-card {
+      display: grid;
+      gap: 16px;
+      min-height: 310px;
+      padding: 18px;
+      border-top: 6px solid var(--lane);
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--lane) 10%, transparent), transparent 48%),
+        var(--panel);
+    }
+
+    .lane-card h3 {
+      font-size: clamp(1.5rem, 2.7vw, 2.4rem);
+      line-height: .94;
+      text-transform: uppercase;
+    }
+
+    .lane-list {
+      display: grid;
+      gap: 8px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .rules li {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 12px;
+    .lane-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      padding-bottom: 8px;
+      color: var(--muted);
+      font-size: .88rem;
     }
 
-    .rules li:last-child {
+    .lane-list li:last-child {
       border-bottom: 0;
       padding-bottom: 0;
     }
 
-    .stack {
+    .lane-list b {
+      color: var(--text);
+      font-weight: 850;
+    }
+
+    .ops-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 18px;
       margin-top: 18px;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .intake-form {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+      padding: 11px;
+      background: #0b0b0b;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      background: transparent;
+    }
+
+    textarea {
+      min-height: 84px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .primary-button {
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 13px 14px;
+      color: #090909;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--gold);
+    }
+
+    .task-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .task-column h3 {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: .76rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .task {
+      display: grid;
+      gap: 10px;
+      min-height: 136px;
+      margin-bottom: 10px;
+      padding: 13px;
+      background: #0b0b0b;
+    }
+
+    .tag {
+      width: fit-content;
+      border: 1px solid var(--tag);
+      border-radius: 999px;
+      padding: 5px 8px;
+      color: var(--tag);
+      font-size: .68rem;
+      font-weight: 950;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--tag) 10%, transparent);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      gap: 8px;
+      min-height: 148px;
+      padding: 14px;
+      background: #0b0b0b;
+    }
+
+    .timeline-item strong {
+      font-size: 1rem;
     }
 
     .stack-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--line);
+      grid-template-columns: repeat(13, minmax(86px, 1fr));
+      gap: 6px;
+      margin-top: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
     }
 
     .stack-layer {
-      display: grid;
-      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
       min-height: 96px;
-      background: rgba(5, 6, 8, .72);
-      padding: 14px;
+      padding: 10px;
+      background: #0b0b0b;
     }
 
     .stack-layer strong {
-      font-size: 1rem;
-      letter-spacing: 0;
+      display: block;
+      font-size: .75rem;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
     .stack-layer span {
+      display: block;
+      margin-top: 9px;
       color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.45;
-    }
-
-    .coverage {
-      width: fit-content;
-      border: 1px solid rgba(119, 217, 255, .28);
-      border-radius: 999px;
-      padding: 5px 9px;
-      color: var(--blue);
-      font-size: .7rem;
-      font-weight: 900;
-      letter-spacing: .1em;
+      font-size: .68rem;
+      font-weight: 850;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      background: rgba(119, 217, 255, .08);
     }
 
-    @media (max-width: 900px) {
-      .network,
-      .map,
-      .stack-grid {
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      color: var(--muted);
+      background: #0b0b0b;
+    }
+
+    @media (max-width: 1100px) {
+      .hero,
+      .ops-grid,
+      .section-grid,
+      .timeline {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .task-board {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 20px, 1440px);
+        padding-top: 10px;
+      }
+
+      .topbar,
+      .hero,
+      .ops-grid,
+      .section-grid,
+      .timeline,
+      .hero-metrics,
+      .readout-grid,
+      .form-row {
         grid-template-columns: 1fr;
       }
 
-      .network {
-        min-height: 0;
+      .hero-copy {
+        min-height: 520px;
       }
 
-      .route {
+      .lane-switcher {
         grid-template-columns: 1fr;
+      }
+
+      footer {
+        display: grid;
       }
     }
   </style>
 </head>
 <body>
   <main>
-    <header>
-      <div class="eyebrow">InnerG Intel / Device Command Framework</div>
-      <h1>Know where to go for what.</h1>
-      <p>A simple operating map for running two MacBooks, an iPhone, Codex, GitHub, and Telegram as one connected creative/business system.</p>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="InnerG Intel Command OS home">
+        <span class="mark">IG</span>
+        InnerG Intel Command OS
+      </a>
+      <nav aria-label="Primary lanes">
+        <a href="#ownyourweb">OWNYOURWEB</a>
+        <a href="#shopnasgfx">SHOPNASGFX</a>
+        <a href="#innergintel">INNERGINTEL</a>
+        <a href="#personal">PERSONAL</a>
+      </nav>
+      <a class="action" href="#intake">New Intake</a>
     </header>
 
-    <section class="network" aria-label="Device network">
-      <article class="node">
-        <small>iPhone</small>
-        <h3>Command Deck</h3>
-        <p>Approvals, Telegram, client messages, mobile screenshots, quick capture.</p>
-        <span class="status">Capture</span>
-      </article>
-
-      <article class="node core">
-        <small>InnerG Intel</small>
-        <h2>Codex Agent Layer</h2>
-        <p>Plans, builds, edits, verifies, reports, and routes work between devices and services.</p>
-        <span class="status">Online</span>
-      </article>
-
-      <article class="node">
-        <small>MacBook 2</small>
-        <h3>Ops / Review Node</h3>
-        <p>Second checks, dashboards, finance monitoring, research, and remote-control support.</p>
-        <span class="status">Verify</span>
-      </article>
-
-      <article class="node">
-        <small>MacBook 1</small>
-        <h3>Build Studio</h3>
-        <p>Websites, demos, code, creative production, Git commits, and deploys.</p>
-        <span class="status">Build</span>
-      </article>
-
-      <article class="node">
-        <small>GitHub</small>
-        <h3>Source Of Truth</h3>
-        <p>Repos, Pages deploys, productized skills, project history, and documentation.</p>
-        <span class="status">Deploy</span>
-      </article>
-
-      <article class="node">
-        <small>Telegram</small>
-        <h3>Command Bus</h3>
-        <p>Nightly notes, finance reports, lead updates, reminders, and action prompts.</p>
-        <span class="status">Notify</span>
-      </article>
-    </section>
-
-    <section class="map" aria-label="Routing map">
-      <div class="panel">
-        <h2>Routing Map</h2>
-        <div class="routes">
-          <div class="route"><strong>Build a site</strong><span>MacBook 1 + Codex</span></div>
-          <div class="route"><strong>Check mobile</strong><span>iPhone</span></div>
-          <div class="route"><strong>Review work</strong><span>MacBook 2</span></div>
-          <div class="route"><strong>Push live</strong><span>GitHub</span></div>
-          <div class="route"><strong>Send update</strong><span>Telegram</span></div>
-          <div class="route"><strong>Approve sensitive action</strong><span>Nasir on iPhone or active Mac</span></div>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div>
+          <div class="eyebrow">Owned systems / bold execution / one command center</div>
+          <h1>Command Your Whole Ecosystem.</h1>
+        </div>
+        <div>
+          <p>One dashboard for orders, forms, project management, updates, key dates, classes, personal priorities, family notes, and investment watchlists. The style stays bold like OWNYOURWEB and SHOPNASGFX, but the interface behaves like an operations console.</p>
+          <div class="hero-metrics" aria-label="Ecosystem summary">
+            <div class="metric"><strong>4</strong><span>Command Lanes</span></div>
+            <div class="metric"><strong>13</strong><span>Stack Layers</span></div>
+            <div class="metric"><strong>24/7</strong><span>Review Loop</span></div>
+            <div class="metric"><strong>1</strong><span>Source Of Truth</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="panel">
-        <h2>Rules</h2>
-        <ul class="rules">
-          <li>GitHub is the source of truth for projects that matter.</li>
-          <li>Telegram is the command bus for reports and quick updates.</li>
-          <li>MacBook 1 builds. MacBook 2 reviews. iPhone approves and captures.</li>
-          <li>Codex prepares sensitive actions, but Nasir confirms them.</li>
+      <aside class="command-panel" aria-label="Active command lane">
+        <div class="panel-head">
+          <div>
+            <span class="signal">System Online</span>
+          </div>
+          <button class="action" type="button" id="cycleLane">Cycle Lane</button>
+        </div>
+
+        <div class="lane-switcher" role="tablist" aria-label="Select active lane">
+          <button class="lane-button active" type="button" data-lane="ownyourweb" style="--lane: var(--gold);"><strong>OWNYOURWEB</strong><span>Orders, web forms, builds, deploys.</span></button>
+          <button class="lane-button" type="button" data-lane="shopnasgfx" style="--lane: var(--red);"><strong>SHOPNASGFX</strong><span>Design orders, assets, approvals.</span></button>
+          <button class="lane-button" type="button" data-lane="innergintel" style="--lane: var(--blue);"><strong>INNERGINTEL</strong><span>Projects, classes, updates, dates.</span></button>
+          <button class="lane-button" type="button" data-lane="personal" style="--lane: var(--green);"><strong>PERSONAL</strong><span>Life, family, money, non-work items.</span></button>
+        </div>
+
+        <div class="active-readout" id="activeReadout" style="--lane: var(--gold);">
+          <small>Active Lane</small>
+          <h2>OWNYOURWEB</h2>
+          <p>Website orders, intake forms, client project boards, launch checklists, domains, hosting, and delivery updates.</p>
+          <div class="readout-grid">
+            <div><small>Primary</small><strong>Orders</strong></div>
+            <div><small>Form</small><strong>Website Intake</strong></div>
+            <div><small>Review</small><strong>Mobile QA</strong></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-grid" aria-label="Ecosystem lanes">
+      <article class="lane-card" id="ownyourweb" style="--lane: var(--gold);">
+        <small>Business Lane 01</small>
+        <h3>OWNYOURWEB</h3>
+        <p>Owned web builds for businesses that need a clear online home, lead flow, launch pages, and support after delivery.</p>
+        <ul class="lane-list">
+          <li><b>Orders</b><span>Websites, funnels, fixes</span></li>
+          <li><b>Forms</b><span>Project request, revision, launch</span></li>
+          <li><b>Projects</b><span>Build board + deploy log</span></li>
+          <li><b>Proof</b><span>Live URL + screenshots</span></li>
         </ul>
+      </article>
+
+      <article class="lane-card" id="shopnasgfx" style="--lane: var(--red);">
+        <small>Creative Lane 02</small>
+        <h3>SHOPNASGFX</h3>
+        <p>Graphic design orders, brand assets, social graphics, client approvals, product catalog movement, and delivery tracking.</p>
+        <ul class="lane-list">
+          <li><b>Orders</b><span>Logos, flyers, covers</span></li>
+          <li><b>Forms</b><span>Design brief + assets</span></li>
+          <li><b>Projects</b><span>Draft, revision, final</span></li>
+          <li><b>Proof</b><span>Preview + approval status</span></li>
+        </ul>
+      </article>
+
+      <article class="lane-card" id="innergintel" style="--lane: var(--blue);">
+        <small>System Lane 03</small>
+        <h3>INNERGINTEL</h3>
+        <p>The source for projects, important details, dates, classes, ops updates, ecosystem rules, skills, and automation notes.</p>
+        <ul class="lane-list">
+          <li><b>Projects</b><span>Repos, skills, dashboards</span></li>
+          <li><b>Dates</b><span>Launches, classes, reviews</span></li>
+          <li><b>Updates</b><span>Telegram ops channel</span></li>
+          <li><b>Details</b><span>Decisions + credentials map</span></li>
+        </ul>
+      </article>
+
+      <article class="lane-card" id="personal" style="--lane: var(--green);">
+        <small>Life Lane 04</small>
+        <h3>PERSONAL</h3>
+        <p>Non-work notes, family priorities, personal appointments, investment watchlists, reminders, and life admin.</p>
+        <ul class="lane-list">
+          <li><b>Life</b><span>Tasks, errands, habits</span></li>
+          <li><b>Family</b><span>Dates, needs, notes</span></li>
+          <li><b>Money</b><span>Holdings, bills, alerts</span></li>
+          <li><b>Private</b><span>Human approved actions</span></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="ops-grid" id="intake">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Universal Intake</h2>
+          <span class="signal">Ready</span>
+        </div>
+        <form class="intake-form">
+          <div class="form-row">
+            <div class="field">
+              <label for="lane">Lane</label>
+              <select id="lane" name="lane">
+                <option>OWNYOURWEB</option>
+                <option>SHOPNASGFX</option>
+                <option>INNERGINTEL</option>
+                <option>PERSONAL</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="requestType">Request Type</label>
+              <select id="requestType" name="requestType">
+                <option>Order</option>
+                <option>Form</option>
+                <option>Project</option>
+                <option>Date</option>
+                <option>Update</option>
+                <option>Personal</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="title">Title</label>
+            <input id="title" name="title" placeholder="Client site, logo order, class date, family note">
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="priority">Priority</label>
+              <select id="priority" name="priority">
+                <option>Normal</option>
+                <option>High</option>
+                <option>Urgent</option>
+                <option>Waiting</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dueDate">Due Date</label>
+              <input id="dueDate" name="dueDate" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Important details, links, deliverables, budget, assets, approval needs"></textarea>
+          </div>
+          <button class="primary-button" type="button">Prepare Command Card</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Project Board</h2>
+          <span class="signal">Synced</span>
+        </div>
+        <div class="task-board" aria-label="Project management columns">
+          <div class="task-column">
+            <h3>Capture</h3>
+            <article class="task">
+              <span class="tag" style="--tag: var(--gold);">OWNYOURWEB</span>
+              <p>New client request enters website intake with business basics, goal, current URL, and launch target.</p>
+              <small>Form -> Review</small>
+            </article>
+            <article class="task">
+              <span class="tag" style="--tag: var(--green);">PERSONAL</span>
+              <p>Family, life admin, bills, and investment notes enter private review before any action.</p>
+              <small>Private -> Confirm</small>
+            </article>
+          </div>
+          <div class="task-column">
+            <h3>Build</h3>
+            <article class="task">
+              <span class="tag" style="--tag: var(--red);">SHOPNASGFX</span>
+              <p>Design order moves through asset collection, draft production, revision loop, and final delivery.</p>
+              <small>Assets -> Draft</small>
+            </article>
+            <article class="task">
+              <span class="tag" style="--tag: var(--blue);">INNERGINTEL</span>
+              <p>System updates, skills, classes, and important dates stay connected to the repo and ops channel.</p>
+              <small>Repo -> Ops Update</small>
+            </article>
+          </div>
+          <div class="task-column">
+            <h3>Execute</h3>
+            <article class="task">
+              <span class="tag" style="--tag: var(--teal);">SECURITY</span>
+              <p>Before launch: permissions, secrets, forms, rate limits, logs, backups, and recovery path are checked.</p>
+              <small>Verify -> Deploy</small>
+            </article>
+            <article class="task">
+              <span class="tag" style="--tag: var(--violet);">REPORT</span>
+              <p>Every meaningful change gets a short update with links, status, owner, and next action.</p>
+              <small>Log -> Notify</small>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="panel stack" aria-label="Full-stack production coverage">
-      <h2>Production Stack</h2>
-      <div class="stack-grid">
-        <div class="stack-layer"><strong>Frontend</strong><span>MacBook 1 + Codex build and visual QA lane.</span><em class="coverage">Covered</em></div>
-        <div class="stack-layer"><strong>APIs & Backend Logic</strong><span>Product behavior, integrations, validation, and jobs.</span><em class="coverage">Planned</em></div>
-        <div class="stack-layer"><strong>Database & Storage</strong><span>Schemas, storage rules, backups, and migration history.</span><em class="coverage">Planned</em></div>
-        <div class="stack-layer"><strong>Auth & Permissions</strong><span>Role matrix, session rules, and admin-only workflows.</span><em class="coverage">Planned</em></div>
-        <div class="stack-layer"><strong>Hosting & Deployment</strong><span>GitHub-backed deploy steps, domains, and rollback notes.</span><em class="coverage">Partial</em></div>
-        <div class="stack-layer"><strong>Cloud & Compute</strong><span>Runtime choice, environment variables, and secrets map.</span><em class="coverage">Planned</em></div>
-        <div class="stack-layer"><strong>CI/CD & Version Control</strong><span>Branches, checks, releases, and source of truth.</span><em class="coverage">Partial</em></div>
-        <div class="stack-layer"><strong>Security & RLS</strong><span>Policy review, secret scanning, and human approval.</span><em class="coverage">Partial</em></div>
-        <div class="stack-layer"><strong>Rate Limiting</strong><span>Per-route limits, abuse rules, and webhook protection.</span><em class="coverage">Planned</em></div>
-        <div class="stack-layer"><strong>Caching & CDN</strong><span>Cache rules, asset versioning, and purge process.</span><em class="coverage">Planned</em></div>
-        <div class="stack-layer"><strong>Load Balancing & Scaling</strong><span>Scale thresholds, queues, and autoscaling rules.</span><em class="coverage">Future</em></div>
-        <div class="stack-layer"><strong>Error Tracking & Logs</strong><span>Structured logs, alerts, and MacBook 2 review lane.</span><em class="coverage">Planned</em></div>
-        <div class="stack-layer"><strong>Availability & Recovery</strong><span>Uptime checks, restore tests, and incident notes.</span><em class="coverage">Planned</em></div>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Dates + Updates</h2>
+        <span class="signal">Calendar Layer</span>
+      </div>
+      <div class="timeline" aria-label="Important timeline lanes">
+        <article class="timeline-item">
+          <small>Orders</small>
+          <strong>Client Delivery Dates</strong>
+          <p>Track website launches, graphic deadlines, revisions, invoices, and final handoffs.</p>
+        </article>
+        <article class="timeline-item">
+          <small>Classes</small>
+          <strong>Learning Schedule</strong>
+          <p>Keep class dates, assignments, resources, and follow-up work inside INNERGINTEL.</p>
+        </article>
+        <article class="timeline-item">
+          <small>Ops</small>
+          <strong>System Updates</strong>
+          <p>Record new repos, deployed pages, automation changes, production checks, and channel posts.</p>
+        </article>
+        <article class="timeline-item">
+          <small>Private</small>
+          <strong>Personal Review</strong>
+          <p>Separate personal priorities, family items, and investments from client-facing operations.</p>
+        </article>
       </div>
     </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Security To Execution</h2>
+        <span class="signal">Full Stack</span>
+      </div>
+      <div class="stack-grid" aria-label="Production stack coverage">
+        <div class="stack-layer"><strong>Frontend</strong><span>Covered</span></div>
+        <div class="stack-layer"><strong>APIs</strong><span>Planned</span></div>
+        <div class="stack-layer"><strong>Database</strong><span>Planned</span></div>
+        <div class="stack-layer"><strong>Auth</strong><span>Planned</span></div>
+        <div class="stack-layer"><strong>Hosting</strong><span>Partial</span></div>
+        <div class="stack-layer"><strong>Cloud</strong><span>Planned</span></div>
+        <div class="stack-layer"><strong>CI/CD</strong><span>Partial</span></div>
+        <div class="stack-layer"><strong>Security</strong><span>Partial</span></div>
+        <div class="stack-layer"><strong>Rate Limits</strong><span>Planned</span></div>
+        <div class="stack-layer"><strong>CDN</strong><span>Planned</span></div>
+        <div class="stack-layer"><strong>Scaling</strong><span>Future</span></div>
+        <div class="stack-layer"><strong>Logs</strong><span>Planned</span></div>
+        <div class="stack-layer"><strong>Recovery</strong><span>Planned</span></div>
+      </div>
+    </section>
+
+    <footer>
+      <strong>OWNYOURWEB x SHOPNASGFX x INNERGINTEL x PERSONAL</strong>
+      <span>Capture -> Build -> Verify -> Deploy -> Notify -> Document</span>
+    </footer>
   </main>
+
+  <script>
+    const lanes = {
+      ownyourweb: {
+        name: "OWNYOURWEB",
+        color: "var(--gold)",
+        summary: "Website orders, intake forms, client project boards, launch checklists, domains, hosting, and delivery updates.",
+        primary: "Orders",
+        form: "Website Intake",
+        review: "Mobile QA"
+      },
+      shopnasgfx: {
+        name: "SHOPNASGFX",
+        color: "var(--red)",
+        summary: "Design orders, brand briefs, asset uploads, draft approvals, revision rounds, invoices, and delivery tracking.",
+        primary: "Design Jobs",
+        form: "Creative Brief",
+        review: "Client Approval"
+      },
+      innergintel: {
+        name: "INNERGINTEL",
+        color: "var(--blue)",
+        summary: "Project management, important details, dates, classes, repo updates, system rules, skills, and ops reporting.",
+        primary: "Projects",
+        form: "System Update",
+        review: "Ops Channel"
+      },
+      personal: {
+        name: "PERSONAL",
+        color: "var(--green)",
+        summary: "Life admin, family details, non-work reminders, investment watchlists, private notes, and human-approved actions.",
+        primary: "Life",
+        form: "Private Note",
+        review: "Human Confirm"
+      }
+    };
+
+    const buttons = Array.from(document.querySelectorAll(".lane-button"));
+    const readout = document.querySelector("#activeReadout");
+    const laneSelect = document.querySelector("#lane");
+    const cycleLane = document.querySelector("#cycleLane");
+    let activeIndex = 0;
+
+    function setLane(key) {
+      const lane = lanes[key];
+      activeIndex = buttons.findIndex((button) => button.dataset.lane === key);
+      buttons.forEach((button) => button.classList.toggle("active", button.dataset.lane === key));
+      readout.style.setProperty("--lane", lane.color);
+      readout.innerHTML = `
+        <small>Active Lane</small>
+        <h2>${lane.name}</h2>
+        <p>${lane.summary}</p>
+        <div class="readout-grid">
+          <div><small>Primary</small><strong>${lane.primary}</strong></div>
+          <div><small>Form</small><strong>${lane.form}</strong></div>
+          <div><small>Review</small><strong>${lane.review}</strong></div>
+        </div>
+      `;
+      laneSelect.value = lane.name;
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setLane(button.dataset.lane));
+    });
+
+    cycleLane.addEventListener("click", () => {
+      const next = buttons[(activeIndex + 1) % buttons.length];
+      setLane(next.dataset.lane);
+    });
+  </script>
 </body>
 </html>
