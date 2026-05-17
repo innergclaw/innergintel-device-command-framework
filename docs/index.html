@@ -4,154 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paid Client Intake</title>
-  <meta name="description" content="Paid client intake for OWNYOURWEB and SHOPNASGFX projects.">
+  <meta http-equiv="refresh" content="0; url=dashboard/">
+  <meta name="description" content="Paid client intake form for OWNYOURWEB and SHOPNASGFX.">
   <style>
     :root {
       color-scheme: dark;
-      --bg: #050505;
+      --gold: #f5b51b;
       --text: #f7f4ec;
       --muted: #ada79a;
-      --line: #3d3526;
-      --gold: #f5b51b;
     }
 
-    * { box-sizing: border-box; min-width: 0; }
+    * { box-sizing: border-box; }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background:
-        linear-gradient(rgba(245, 181, 27, .055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245, 181, 27, .045) 1px, transparent 1px),
-        #050505;
-      background-size: 40px 40px;
-    }
-
-    main {
-      width: min(1120px, calc(100% - 28px));
-      margin: 0 auto;
-      padding: 24px 0 48px;
-    }
-
-    header,
-    section {
-      border: 2px solid var(--gold);
-      background: rgba(8, 8, 8, .95);
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      padding: 12px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .86rem;
-      font-weight: 950;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .mark {
       display: grid;
       place-items: center;
-      width: 34px;
-      height: 34px;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-    }
-
-    section {
-      margin-top: 14px;
-      padding: clamp(22px, 5vw, 56px);
-      background:
-        linear-gradient(135deg, rgba(245, 181, 27, .14), transparent 42%),
-        #080808;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      font-size: .72rem;
-      font-weight: 950;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    h1,
-    p { margin: 0; }
-
-    h1 {
-      max-width: 880px;
-      margin-top: 18px;
-      font-size: clamp(3.2rem, 10vw, 8rem);
-      line-height: .8;
-      text-transform: uppercase;
-    }
-
-    h1 span { display: block; }
-
-    p {
-      max-width: 720px;
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.62;
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    a {
-      border: 1px solid var(--gold);
-      padding: 12px 14px;
-      color: var(--gold);
-      font-size: .78rem;
-      font-weight: 950;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      text-decoration: none;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
       background: #050505;
     }
 
-    a.primary {
-      color: #050505;
-      background: var(--gold);
+    main {
+      width: min(680px, calc(100% - 28px));
+      border: 2px solid var(--gold);
+      padding: 28px;
+      background: #080808;
     }
 
-    @media (max-width: 760px) {
-      header,
-      .actions { display: grid; }
-      h1 { font-size: clamp(3rem, 15vw, 5rem); }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 8vw, 5rem);
+      line-height: .86;
+      text-transform: uppercase;
     }
+
+    p { color: var(--muted); line-height: 1.6; }
+    a { color: var(--gold); font-weight: 900; text-transform: uppercase; }
   </style>
 </head>
 <body>
   <main>
-    <header>
-      <div class="brand"><span class="mark">IG</span> Paid Client Intake</div>
-    </header>
-
-    <section>
-      <div class="eyebrow">OWNYOURWEB / SHOPNASGFX</div>
-      <h1><span>Project</span><span>Intake</span></h1>
-      <p>This page is for confirmed paid clients. Use the form to send your project details, files, links, deadlines, and notes so we can review everything and follow up with the next step.</p>
-      <div class="actions">
-        <a class="primary" href="paid-client-form.html">Open Paid Client Form</a>
-        <a href="https://ownyourweb.xyz/">OWNYOURWEB</a>
-        <a href="https://shopnasgfx.com/">SHOPNASGFX</a>
-      </div>
-    </section>
+    <h1>Paid Client Intake</h1>
+    <p>Opening the intake form.</p>
+    <p><a href="dashboard/">Open Form</a></p>
   </main>
 </body>
 </html>
