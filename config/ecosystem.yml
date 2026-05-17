@@ -7,6 +7,12 @@ lanes:
     label: OWNYOURWEB
     role: Website Business Operations
     accent: gold
+    intake_source:
+      primary: live_site_form
+      url: https://ownyourweb.xyz/
+      form_name: Project Request
+      memory_route: website intake memory -> build queue -> project board
+      manual_dashboard_entry: fallback_only
     owns:
       - website orders
       - project request forms
@@ -31,6 +37,12 @@ lanes:
     label: SHOPNASGFX
     role: Creative Design Operations
     accent: red
+    intake_source:
+      primary: live_site_form
+      url: https://shopnasgfx.com/
+      form_name: Book Now / Contact
+      memory_route: design intake memory -> asset queue -> project board
+      manual_dashboard_entry: fallback_only
     owns:
       - design orders
       - creative briefs
@@ -55,6 +67,12 @@ lanes:
     label: INNERGINTEL
     role: System Project Management
     accent: blue
+    intake_source:
+      primary: dashboard_or_ops_capture
+      url: internal
+      form_name: System Update
+      memory_route: system memory -> project/date/class board -> ops update
+      manual_dashboard_entry: allowed
     owns:
       - project management
       - important details
@@ -79,6 +97,12 @@ lanes:
     label: PERSONAL
     role: Private Life Operations
     accent: green
+    intake_source:
+      primary: private_manual_capture
+      url: internal
+      form_name: Private Note
+      memory_route: private memory -> human review -> reminder/action
+      manual_dashboard_entry: allowed
     owns:
       - life admin
       - family notes
@@ -109,6 +133,25 @@ shared_objects:
   - update
   - approval
 
+intake_memory_rules:
+  ownyourweb:
+    source_of_truth: live OWNYOURWEB Project Request form
+    dashboard_role: review and project management
+    normal_first_status: capture
+    next_status: review
+  shopnasgfx:
+    source_of_truth: live SHOPNASGFX Book Now / Contact flow
+    dashboard_role: review and design project management
+    normal_first_status: capture
+    next_status: assets needed
+  manual_dashboard_intake:
+    allowed_for:
+      - INNERGINTEL
+      - PERSONAL
+      - Telegram captures
+      - corrected form submissions
+      - form downtime fallback
+
 security_rules:
   public_dashboard:
     show:
@@ -130,4 +173,3 @@ security_rules:
     - DNS changes
     - public launch announcements
     - client-facing commitments
-

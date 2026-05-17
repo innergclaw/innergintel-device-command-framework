@@ -17,6 +17,8 @@ The ecosystem now runs through four dashboard lanes:
 
 See [docs/ecosystem-map.md](docs/ecosystem-map.md).
 
+Client intake for OWNYOURWEB and SHOPNASGFX starts on the live sites, then routes into dashboard memory and project management. See [docs/form-intake-memory.md](docs/form-intake-memory.md).
+
 ## Core Idea
 
 InnerG Intel runs like a small command network:
@@ -99,6 +101,7 @@ innergintel-device-command-framework/
 ├── docs/
 │   ├── command-map.md
 │   ├── ecosystem-map.md
+│   ├── form-intake-memory.md
 │   ├── operating-rules.md
 │   ├── production-stack.md
 │   └── workflows.md

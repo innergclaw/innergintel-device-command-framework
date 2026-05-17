@@ -66,7 +66,7 @@
 
 ## Ecosystem Intake Routing
 
-1. Capture the request in the dashboard intake.
+1. Capture OWNYOURWEB and SHOPNASGFX client requests from their live site forms.
 2. Assign it to OWNYOURWEB, SHOPNASGFX, INNERGINTEL, or PERSONAL.
 3. Mark the request type: order, form, project, date, update, or private note.
 4. Add due date, priority, links, files, and approval requirements.
@@ -75,9 +75,18 @@
 7. Send sensitive actions to human approval before execution.
 8. Log the status change after the task is done.
 
+## Live Form To Memory Flow
+
+1. Client submits OWNYOURWEB Project Request or SHOPNASGFX Book/Contact form.
+2. Normalize the submission into the shared intake memory fields.
+3. Store the source site, form name, contact info, notes, files/links, status, and next action.
+4. Create or update the matching dashboard project card.
+5. Notify Telegram or the ops channel when the submission needs action.
+6. Keep manual dashboard entry as fallback for these two lanes.
+
 ## OWNYOURWEB Order Flow
 
-1. Collect website intake details.
+1. Collect website intake details from the OWNYOURWEB live Project Request form.
 2. Review offer, pages, goal, budget, and launch target.
 3. Build project board with copy, design, domain, hosting, QA, and launch tasks.
 4. Build on MacBook 1 with Codex.
@@ -86,7 +95,7 @@
 
 ## SHOPNASGFX Order Flow
 
-1. Collect design brief and assets.
+1. Collect design brief, booking, contact, and asset details from the SHOPNASGFX live site flow.
 2. Confirm design type, platform, text, style, and deadline.
 3. Move through draft, revision, approval, and delivery.
 4. Store final delivery reference and client update.

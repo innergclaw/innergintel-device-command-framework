@@ -515,6 +515,51 @@
       background: #0b0b0b;
     }
 
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .source-card {
+      display: grid;
+      gap: 12px;
+      min-height: 210px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      border-top: 6px solid var(--lane);
+      padding: 16px;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--lane) 10%, transparent), transparent 48%),
+        #0b0b0b;
+    }
+
+    .source-card h3 {
+      font-size: clamp(1.35rem, 2.5vw, 2.2rem);
+      line-height: .95;
+      text-transform: uppercase;
+    }
+
+    .source-card p {
+      color: var(--muted);
+      line-height: 1.52;
+    }
+
+    .source-card a {
+      width: fit-content;
+      border: 1px solid var(--lane);
+      border-radius: 6px;
+      padding: 9px 10px;
+      color: var(--lane);
+      font-size: .72rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--lane) 10%, transparent);
+    }
+
     .timeline-item strong {
       font-size: 1rem;
     }
@@ -569,6 +614,7 @@
       .hero,
       .ops-grid,
       .section-grid,
+      .source-grid,
       .timeline {
         grid-template-columns: 1fr 1fr;
       }
@@ -588,6 +634,7 @@
       .hero,
       .ops-grid,
       .section-grid,
+      .source-grid,
       .timeline,
       .hero-metrics,
       .readout-grid,
@@ -632,7 +679,7 @@
           <h1>Command Your Whole Ecosystem.</h1>
         </div>
         <div>
-          <p>One dashboard for orders, forms, project management, updates, key dates, classes, personal priorities, family notes, and investment watchlists. The style stays bold like OWNYOURWEB and SHOPNASGFX, but the interface behaves like an operations console.</p>
+          <p>One dashboard for orders, forms, project management, updates, key dates, classes, personal priorities, family notes, and investment watchlists. OWNYOURWEB and SHOPNASGFX intake starts from their live site forms, then flows into memory, projects, and the command board.</p>
           <div class="hero-metrics" aria-label="Ecosystem summary">
             <div class="metric"><strong>4</strong><span>Command Lanes</span></div>
             <div class="metric"><strong>13</strong><span>Stack Layers</span></div>
@@ -677,7 +724,7 @@
         <p>Owned web builds for businesses that need a clear online home, lead flow, launch pages, and support after delivery.</p>
         <ul class="lane-list">
           <li><b>Orders</b><span>Websites, funnels, fixes</span></li>
-          <li><b>Forms</b><span>Project request, revision, launch</span></li>
+          <li><b>Forms</b><span>ownyourweb.xyz request form</span></li>
           <li><b>Projects</b><span>Build board + deploy log</span></li>
           <li><b>Proof</b><span>Live URL + screenshots</span></li>
         </ul>
@@ -689,7 +736,7 @@
         <p>Graphic design orders, brand assets, social graphics, client approvals, product catalog movement, and delivery tracking.</p>
         <ul class="lane-list">
           <li><b>Orders</b><span>Logos, flyers, covers</span></li>
-          <li><b>Forms</b><span>Design brief + assets</span></li>
+          <li><b>Forms</b><span>shopnasgfx.com book/contact</span></li>
           <li><b>Projects</b><span>Draft, revision, final</span></li>
           <li><b>Proof</b><span>Preview + approval status</span></li>
         </ul>
@@ -720,11 +767,43 @@
       </article>
     </section>
 
+    <section class="panel" aria-label="Form intake memory sources">
+      <div class="panel-head">
+        <h2>Form Intake Memory</h2>
+        <span class="signal">Connected Sources</span>
+      </div>
+      <div class="source-grid">
+        <article class="source-card" style="--lane: var(--gold);">
+          <small>OWNYOURWEB Source</small>
+          <h3>Project Request Form</h3>
+          <p>Website leads, project notes, timeline, business details, and current-site links should originate from the live OWNYOURWEB form. The dashboard stores the memory trail and turns each valid submission into a project card.</p>
+          <ul class="lane-list">
+            <li><b>Origin</b><span>ownyourweb.xyz</span></li>
+            <li><b>Memory</b><span>website intake + build queue</span></li>
+            <li><b>Route</b><span>OWNYOURWEB -> review -> project</span></li>
+          </ul>
+          <a href="https://ownyourweb.xyz/" target="_blank" rel="noreferrer">Open Form Source</a>
+        </article>
+
+        <article class="source-card" style="--lane: var(--red);">
+          <small>SHOPNASGFX Source</small>
+          <h3>Book / Contact Flow</h3>
+          <p>Design orders, booking details, contact requests, assets, and client notes should originate from SHOPNASGFX site actions. The dashboard keeps the memory trail and routes the job into draft, revision, approval, and delivery.</p>
+          <ul class="lane-list">
+            <li><b>Origin</b><span>shopnasgfx.com</span></li>
+            <li><b>Memory</b><span>design intake + asset queue</span></li>
+            <li><b>Route</b><span>SHOPNASGFX -> assets -> draft</span></li>
+          </ul>
+          <a href="https://shopnasgfx.com/" target="_blank" rel="noreferrer">Open Form Source</a>
+        </article>
+      </div>
+    </section>
+
     <section class="ops-grid" id="intake">
       <div class="panel">
         <div class="panel-head">
           <h2>Universal Intake</h2>
-          <span class="signal">Ready</span>
+          <span class="signal">Manual Fallback</span>
         </div>
         <form class="intake-form">
           <div class="form-row">
@@ -737,6 +816,18 @@
                 <option>PERSONAL</option>
               </select>
             </div>
+            <div class="field">
+              <label for="source">Source</label>
+              <select id="source" name="source">
+                <option>Live Site Form</option>
+                <option>Manual Dashboard Entry</option>
+                <option>Telegram Capture</option>
+                <option>Client Message</option>
+                <option>Private Note</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
             <div class="field">
               <label for="requestType">Request Type</label>
               <select id="requestType" name="requestType">
@@ -786,8 +877,8 @@
             <h3>Capture</h3>
             <article class="task">
               <span class="tag" style="--tag: var(--gold);">OWNYOURWEB</span>
-              <p>New client request enters website intake with business basics, goal, current URL, and launch target.</p>
-              <small>Form -> Review</small>
+              <p>New website requests come from ownyourweb.xyz, then become memory records with business basics, goal, current URL, and launch target.</p>
+              <small>Site Form -> Memory -> Review</small>
             </article>
             <article class="task">
               <span class="tag" style="--tag: var(--green);">PERSONAL</span>
@@ -799,8 +890,8 @@
             <h3>Build</h3>
             <article class="task">
               <span class="tag" style="--tag: var(--red);">SHOPNASGFX</span>
-              <p>Design order moves through asset collection, draft production, revision loop, and final delivery.</p>
-              <small>Assets -> Draft</small>
+              <p>Design jobs come from shopnasgfx.com booking/contact flow, then move through asset collection, draft, revision, and delivery.</p>
+              <small>Site Form -> Memory -> Draft</small>
             </article>
             <article class="task">
               <span class="tag" style="--tag: var(--blue);">INNERGINTEL</span>

@@ -6,10 +6,21 @@ This map defines the four main lanes for the InnerG Intel command dashboard.
 
 | Lane | Purpose | Core Objects | Primary Workflows |
 | --- | --- | --- | --- |
-| OWNYOURWEB | Website business operations | orders, forms, projects, domains, launches, client updates | website intake, proposal, build, QA, deploy, handoff |
-| SHOPNASGFX | Creative design operations | orders, design briefs, assets, drafts, approvals, deliveries | order intake, asset collection, draft, revision, approval, delivery |
+| OWNYOURWEB | Website business operations | orders, forms, projects, domains, launches, client updates | live site form, proposal, build, QA, deploy, handoff |
+| SHOPNASGFX | Creative design operations | orders, design briefs, assets, drafts, approvals, deliveries | live site booking/contact, asset collection, draft, revision, approval, delivery |
 | INNERGINTEL | System and project operations | projects, important details, dates, classes, skills, updates | project planning, class tracking, ops updates, repo logging, automation notes |
 | PERSONAL | Non-work life operations | family notes, appointments, investments, bills, private reminders | private intake, human review, reminder, investment watch, follow-up |
+
+## Intake Source Rule
+
+OWNYOURWEB and SHOPNASGFX client memory starts from the live website forms:
+
+- OWNYOURWEB: `https://ownyourweb.xyz/` Project Request form
+- SHOPNASGFX: `https://shopnasgfx.com/` Book Now / Contact flow
+
+The dashboard is the command layer after capture. It reviews, organizes, remembers, and turns valid submissions into project cards.
+
+Manual dashboard intake is a fallback for those two lanes. It is normal intake for INNERGINTEL and PERSONAL.
 
 ## Shared Object Model
 
@@ -52,6 +63,8 @@ Personal items can use a shorter version:
 
 ### OWNYOURWEB
 
+Primary source: `https://ownyourweb.xyz/` Project Request form.
+
 - name
 - email
 - business name
@@ -63,6 +76,8 @@ Personal items can use a shorter version:
 - notes and links
 
 ### SHOPNASGFX
+
+Primary source: `https://shopnasgfx.com/` Book Now / Contact flow.
 
 - name
 - email
@@ -99,4 +114,3 @@ Personal items can use a shorter version:
 ## Security Rule
 
 Keep personal and sensitive data separate from public dashboards. The dashboard can show categories, statuses, and references, but private notes, credentials, payment data, and investment details need restricted storage and human approval before action.
-
