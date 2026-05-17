@@ -3,35 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InnerG Intel Command OS</title>
-  <meta name="description" content="A Jarvis-style command dashboard for OWNYOURWEB, SHOPNASGFX, INNERGINTEL, and personal operations.">
+  <title>Paid Client Intake</title>
+  <meta name="description" content="Paid client intake for OWNYOURWEB and SHOPNASGFX projects.">
   <style>
     :root {
       color-scheme: dark;
       --bg: #050505;
-      --panel: #101010;
-      --panel-2: #171717;
-      --panel-3: #202020;
       --text: #f7f4ec;
       --muted: #ada79a;
       --line: #3d3526;
-      --line-strong: #f5b51b;
       --gold: #f5b51b;
-      --blue: #3190ff;
-      --red: #f24530;
-      --green: #55d66b;
-      --teal: #35d4c7;
-      --violet: #9b5cff;
     }
 
-    * {
-      box-sizing: border-box;
-      min-width: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; min-width: 0; }
 
     body {
       margin: 0;
@@ -42,54 +26,37 @@
         linear-gradient(rgba(245, 181, 27, .055) 1px, transparent 1px),
         linear-gradient(90deg, rgba(245, 181, 27, .045) 1px, transparent 1px),
         #050505;
-      background-size: 40px 40px, 40px 40px, auto;
-      overflow-x: hidden;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
+      background-size: 40px 40px;
     }
 
     main {
-      width: min(1440px, calc(100% - 32px));
-      max-width: 100%;
+      width: min(1120px, calc(100% - 28px));
       margin: 0 auto;
       padding: 24px 0 48px;
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 16px;
+    header,
+    section {
+      border: 2px solid var(--gold);
+      background: rgba(8, 8, 8, .95);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
       align-items: center;
-      border: 2px solid var(--line-strong);
-      border-radius: 0;
       padding: 12px;
-      background: rgba(5, 5, 5, .94);
-      backdrop-filter: blur(18px);
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      max-width: 100%;
-      color: var(--text);
       font-size: .86rem;
       font-weight: 950;
       letter-spacing: .08em;
       text-transform: uppercase;
-      white-space: nowrap;
     }
 
     .mark {
@@ -98,1068 +65,93 @@
       width: 34px;
       height: 34px;
       border: 2px solid var(--gold);
-      border-radius: 0;
       color: var(--gold);
-      font-size: .82rem;
-      font-weight: 950;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      min-width: 0;
-    }
-
-    nav a,
-    .action {
-      border: 1px solid var(--gold);
-      border-radius: 0;
-      padding: 9px 11px;
-      color: var(--gold);
-      font-size: .75rem;
-      font-weight: 900;
-      letter-spacing: .06em;
-      text-decoration: none;
-      text-transform: uppercase;
-      background: #0a0a0a;
-      text-align: center;
-    }
-
-    nav a:hover,
-    .action:hover {
-      color: var(--text);
-      border-color: var(--gold);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
-      gap: 14px;
-      align-items: stretch;
-      padding: 18px 0 14px;
-    }
-
-    .hero-copy,
-    .command-panel,
-    .panel,
-    .lane-card,
-    .task,
-    .field,
-    .timeline-item {
-      min-width: 0;
-      max-width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 0;
-      background: rgba(16, 16, 16, .92);
-    }
-
-    .hero-copy {
-      display: grid;
-      align-content: space-between;
-      min-height: min(720px, calc(100vh - 132px));
-      padding: clamp(22px, 4.2vw, 56px);
-      overflow-wrap: anywhere;
-      border-color: var(--gold);
-      border-width: 2px;
+    section {
+      margin-top: 14px;
+      padding: clamp(22px, 5vw, 56px);
       background:
-        linear-gradient(135deg, rgba(245, 181, 27, .14), transparent 38%),
+        linear-gradient(135deg, rgba(245, 181, 27, .14), transparent 42%),
         #080808;
     }
 
     .eyebrow {
       color: var(--gold);
-      font-size: .78rem;
+      font-size: .72rem;
       font-weight: 950;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      overflow-wrap: anywhere;
     }
 
     h1,
-    h2,
-    h3,
-    p {
-      margin: 0;
-    }
+    p { margin: 0; }
 
     h1 {
-      max-width: 980px;
-      margin-top: 20px;
-      font-size: clamp(4.2rem, 8.1vw, 8.4rem);
-      line-height: .78;
-      letter-spacing: 0;
+      max-width: 880px;
+      margin-top: 18px;
+      font-size: clamp(3.2rem, 10vw, 8rem);
+      line-height: .8;
       text-transform: uppercase;
-      overflow-wrap: normal;
-      max-width: 100%;
     }
 
-    h1 span {
-      display: block;
-    }
+    h1 span { display: block; }
 
-    .hero-copy p {
+    p {
       max-width: 720px;
+      margin-top: 18px;
       color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.65;
-      overflow-wrap: anywhere;
+      font-size: 1.08rem;
+      line-height: 1.62;
     }
 
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
       margin-top: 28px;
     }
 
-    .metric {
-      border: 1px solid var(--line);
-      border-radius: 0;
-      padding: 12px;
-      background: #0b0b0b;
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.7rem;
-      line-height: 1;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: .7rem;
-      font-weight: 900;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-    }
-
-    .command-panel {
-      display: grid;
-      gap: 14px;
-      padding: 18px;
-      align-content: start;
-    }
-
-    .panel-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: start;
-      margin-bottom: 16px;
-    }
-
-    .panel-head h2,
-    .panel h2 {
-      font-size: clamp(1.65rem, 3vw, 3.1rem);
-      line-height: .95;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .signal {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      border: 1px solid rgba(85, 214, 107, .44);
-      border-radius: 999px;
-      padding: 7px 10px;
-      color: var(--green);
-      font-size: .68rem;
-      font-weight: 950;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      background: rgba(85, 214, 107, .08);
-    }
-
-    .signal::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
-    .lane-switcher {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    .lane-button {
-      min-height: 64px;
-      border: 1px solid var(--line);
-      border-radius: 0;
-      padding: 10px;
-      color: var(--text);
-      text-align: left;
-      background: #0b0b0b;
-    }
-
-    .lane-button strong {
-      display: block;
-      font-size: .86rem;
-      font-weight: 950;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .lane-button span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: .76rem;
-      line-height: 1.35;
-    }
-
-    .lane-button.active {
-      border-color: var(--lane);
-      box-shadow: inset 0 0 0 1px var(--lane);
-    }
-
-    .active-readout {
-      border: 1px solid var(--line);
-      border-radius: 0;
-      padding: 18px;
-      background:
-        linear-gradient(135deg, color-mix(in srgb, var(--lane) 18%, transparent), transparent 55%),
-        #0c0c0c;
-    }
-
-    .active-readout small,
-    .lane-card small,
-    .task small,
-    label,
-    .timeline-item small {
-      color: var(--muted);
-      font-size: .7rem;
-      font-style: normal;
-      font-weight: 950;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .active-readout h2 {
-      margin: 8px 0 10px;
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      line-height: .9;
-      text-transform: uppercase;
-    }
-
-    .active-readout p,
-    .task p,
-    .lane-card p,
-    .timeline-item p {
-      color: var(--muted);
-      line-height: 1.52;
-    }
-
-    .readout-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .readout-grid div {
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 0;
-      padding: 11px;
-      background: rgba(0, 0, 0, .24);
-    }
-
-    .readout-grid strong {
-      display: block;
-      margin-top: 6px;
-      font-size: .92rem;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .lane-card {
-      display: grid;
-      gap: 16px;
-      min-height: 336px;
-      padding: 18px;
-      border: 2px solid var(--lane);
-      border-radius: 0;
-      background:
-        linear-gradient(180deg, color-mix(in srgb, var(--lane) 10%, transparent), transparent 48%),
-        var(--panel);
-    }
-
-    .lane-card h3 {
-      font-size: clamp(1.7rem, 2.55vw, 2.45rem);
-      line-height: .86;
-      text-transform: uppercase;
-      overflow-wrap: normal;
-      word-break: normal;
-    }
-
-    .lane-list {
-      display: grid;
-      gap: 8px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .lane-list li {
-      display: grid;
-      grid-template-columns: minmax(82px, .45fr) minmax(0, 1fr);
-      gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, .1);
-      padding-bottom: 8px;
-      color: var(--muted);
-      font-size: .88rem;
-    }
-
-    .lane-list li:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .lane-list b {
-      color: var(--text);
-      font-weight: 850;
-    }
-
-    .ops-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .panel {
-      padding: 18px;
-    }
-
-    .intake-form {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .field {
-      display: grid;
-      gap: 7px;
-      padding: 11px;
-      background: #0b0b0b;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 0;
-      outline: 0;
-      color: var(--text);
-      background: transparent;
-    }
-
-    textarea {
-      min-height: 84px;
-      resize: vertical;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .primary-button {
+    a {
       border: 1px solid var(--gold);
-      border-radius: 0;
-      padding: 13px 14px;
-      color: #090909;
+      padding: 12px 14px;
+      color: var(--gold);
+      font-size: .78rem;
       font-weight: 950;
       letter-spacing: .08em;
       text-transform: uppercase;
+      text-decoration: none;
+      background: #050505;
+    }
+
+    a.primary {
+      color: #050505;
       background: var(--gold);
     }
 
-    .task-board {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .task-column h3 {
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: .76rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .task {
-      display: grid;
-      gap: 10px;
-      min-height: 136px;
-      margin-bottom: 10px;
-      padding: 13px;
-      background: #0b0b0b;
-      border-radius: 0;
-    }
-
-    .tag {
-      width: fit-content;
-      border: 1px solid var(--tag);
-      border-radius: 999px;
-      padding: 5px 8px;
-      color: var(--tag);
-      font-size: .68rem;
-      font-weight: 950;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      background: color-mix(in srgb, var(--tag) 10%, transparent);
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .timeline-item {
-      display: grid;
-      gap: 8px;
-      min-height: 148px;
-      padding: 14px;
-      background: #0b0b0b;
-    }
-
-    .source-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .source-card {
-      display: grid;
-      gap: 12px;
-      min-height: 210px;
-      border: 1px solid var(--line);
-      border: 2px solid var(--lane);
-      border-radius: 0;
-      padding: 16px;
-      background:
-        linear-gradient(180deg, color-mix(in srgb, var(--lane) 10%, transparent), transparent 48%),
-        #0b0b0b;
-    }
-
-    .source-card h3 {
-      font-size: clamp(1.35rem, 2.3vw, 2.05rem);
-      line-height: .95;
-      text-transform: uppercase;
-      overflow-wrap: normal;
-    }
-
-    .source-card p {
-      color: var(--muted);
-      line-height: 1.52;
-    }
-
-    .source-card a {
-      width: fit-content;
-      border: 1px solid var(--lane);
-      border-radius: 0;
-      padding: 9px 10px;
-      color: var(--lane);
-      font-size: .72rem;
-      font-weight: 950;
-      letter-spacing: .08em;
-      text-decoration: none;
-      text-transform: uppercase;
-      background: color-mix(in srgb, var(--lane) 10%, transparent);
-    }
-
-    .timeline-item strong {
-      font-size: 1rem;
-    }
-
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 6px;
-      margin-top: 16px;
-    }
-
-    .stack-layer {
-      border: 1px solid var(--line);
-      border-radius: 0;
-      min-height: 96px;
-      padding: 10px;
-      background: #0b0b0b;
-    }
-
-    .stack-layer strong {
-      display: block;
-      font-size: .75rem;
-      line-height: 1.2;
-      text-transform: uppercase;
-    }
-
-    .stack-layer span {
-      display: block;
-      margin-top: 9px;
-      color: var(--muted);
-      font-size: .68rem;
-      font-weight: 850;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 18px;
-      border: 1px solid var(--line);
-      border-radius: 0;
-      padding: 16px;
-      color: var(--muted);
-      background: #0b0b0b;
-    }
-
-    @media (max-width: 1100px) {
-      .hero,
-      .ops-grid,
-      .section-grid,
-      .source-grid,
-      .timeline {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-copy {
-        min-height: auto;
-      }
-
-      h1 {
-        font-size: clamp(4rem, 13vw, 7.2rem);
-      }
-
-      .task-board {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 760px) {
-      main {
-        width: calc(100vw - 20px);
-        overflow: hidden;
-        padding-top: 10px;
-      }
-
-      .topbar,
-      .hero,
-      .ops-grid,
-      .section-grid,
-      .source-grid,
-      .timeline,
-      .hero-metrics,
-      .readout-grid,
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .topbar {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-      }
-
-      nav {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-      }
-
-      nav a,
-      .action {
-        min-width: 0;
-        width: 100%;
-        white-space: normal;
-      }
-
-      nav a {
-        flex: none;
-      }
-
-      .hero-copy {
-        min-height: auto;
-        padding: 22px;
-      }
-
-      h1 {
-        font-size: clamp(2.85rem, 12vw, 4.45rem);
-        line-height: .82;
-      }
-
-      .panel-head {
-        display: grid;
-      }
-
-      .brand {
-        white-space: normal;
-        overflow-wrap: anywhere;
-      }
-
-      .lane-switcher {
-        grid-template-columns: 1fr;
-      }
-
-      .lane-list li {
-        grid-template-columns: 1fr;
-      }
-
-      footer {
-        display: grid;
-      }
+      header,
+      .actions { display: grid; }
+      h1 { font-size: clamp(3rem, 15vw, 5rem); }
     }
   </style>
 </head>
 <body>
   <main>
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="InnerG Intel Command OS home">
-        <span class="mark">IG</span>
-        InnerG Intel Command OS
-      </a>
-      <nav aria-label="Primary lanes">
-        <a href="#ownyourweb">OWNYOURWEB</a>
-        <a href="#shopnasgfx">SHOPNASGFX</a>
-        <a href="#innergintel">INNERGINTEL</a>
-        <a href="#personal">PERSONAL</a>
-      </nav>
-      <a class="action" href="paid-client-form.html">Paid Client Form</a>
+    <header>
+      <div class="brand"><span class="mark">IG</span> Paid Client Intake</div>
     </header>
 
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <div>
-          <div class="eyebrow">Owned systems / bold execution / one command center</div>
-          <h1><span>Own</span><span>Your</span><span>Command</span><span>OS</span></h1>
-        </div>
-        <div>
-          <p>One dashboard for orders, forms, project management, updates, key dates, classes, personal priorities, family notes, and investment watchlists. OWNYOURWEB and SHOPNASGFX intake starts from their live site forms, then flows into memory, projects, and the command board.</p>
-          <div class="hero-metrics" aria-label="Ecosystem summary">
-            <div class="metric"><strong>4</strong><span>Command Lanes</span></div>
-            <div class="metric"><strong>13</strong><span>Stack Layers</span></div>
-            <div class="metric"><strong>24/7</strong><span>Review Loop</span></div>
-            <div class="metric"><strong>1</strong><span>Source Of Truth</span></div>
-          </div>
-        </div>
-      </div>
-
-      <aside class="command-panel" aria-label="Active command lane">
-        <div class="panel-head">
-          <div>
-            <span class="signal">System Online</span>
-          </div>
-          <button class="action" type="button" id="cycleLane">Cycle Lane</button>
-        </div>
-
-        <div class="lane-switcher" role="tablist" aria-label="Select active lane">
-          <button class="lane-button active" type="button" data-lane="ownyourweb" style="--lane: var(--gold);"><strong>OWNYOURWEB</strong><span>Orders, web forms, builds, deploys.</span></button>
-          <button class="lane-button" type="button" data-lane="shopnasgfx" style="--lane: var(--red);"><strong>SHOPNASGFX</strong><span>Design orders, assets, approvals.</span></button>
-          <button class="lane-button" type="button" data-lane="innergintel" style="--lane: var(--blue);"><strong>INNERGINTEL</strong><span>Projects, classes, updates, dates.</span></button>
-          <button class="lane-button" type="button" data-lane="personal" style="--lane: var(--green);"><strong>PERSONAL</strong><span>Life, family, money, non-work items.</span></button>
-        </div>
-
-        <div class="active-readout" id="activeReadout" style="--lane: var(--gold);">
-          <small>Active Lane</small>
-          <h2>OWNYOURWEB</h2>
-          <p>Website orders, intake forms, client project boards, launch checklists, domains, hosting, and delivery updates.</p>
-          <div class="readout-grid">
-            <div><small>Primary</small><strong>Orders</strong></div>
-            <div><small>Form</small><strong>Website Intake</strong></div>
-            <div><small>Review</small><strong>Mobile QA</strong></div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section-grid" aria-label="Ecosystem lanes">
-      <article class="lane-card" id="ownyourweb" style="--lane: var(--gold);">
-        <small>Business Lane 01</small>
-        <h3>OWNYOURWEB</h3>
-        <p>Owned web builds for businesses that need a clear online home, lead flow, launch pages, and support after delivery.</p>
-        <ul class="lane-list">
-          <li><b>Orders</b><span>Websites, funnels, fixes</span></li>
-          <li><b>Forms</b><span>ownyourweb.xyz request form</span></li>
-          <li><b>Projects</b><span>Build board + deploy log</span></li>
-          <li><b>Proof</b><span>Live URL + screenshots</span></li>
-        </ul>
-      </article>
-
-      <article class="lane-card" id="shopnasgfx" style="--lane: var(--red);">
-        <small>Creative Lane 02</small>
-        <h3>SHOPNASGFX</h3>
-        <p>Graphic design orders, brand assets, social graphics, client approvals, product catalog movement, and delivery tracking.</p>
-        <ul class="lane-list">
-          <li><b>Orders</b><span>Logos, flyers, covers</span></li>
-          <li><b>Forms</b><span>shopnasgfx.com book/contact</span></li>
-          <li><b>Projects</b><span>Draft, revision, final</span></li>
-          <li><b>Proof</b><span>Preview + approval status</span></li>
-        </ul>
-      </article>
-
-      <article class="lane-card" id="innergintel" style="--lane: var(--blue);">
-        <small>System Lane 03</small>
-        <h3>INNERGINTEL</h3>
-        <p>The source for projects, important details, dates, classes, ops updates, ecosystem rules, skills, and automation notes.</p>
-        <ul class="lane-list">
-          <li><b>Projects</b><span>Repos, skills, dashboards</span></li>
-          <li><b>Dates</b><span>Launches, classes, reviews</span></li>
-          <li><b>Updates</b><span>Telegram ops channel</span></li>
-          <li><b>Details</b><span>Decisions + credentials map</span></li>
-        </ul>
-      </article>
-
-      <article class="lane-card" id="personal" style="--lane: var(--green);">
-        <small>Life Lane 04</small>
-        <h3>PERSONAL</h3>
-        <p>Non-work notes, family priorities, personal appointments, investment watchlists, reminders, and life admin.</p>
-        <ul class="lane-list">
-          <li><b>Life</b><span>Tasks, errands, habits</span></li>
-          <li><b>Family</b><span>Dates, needs, notes</span></li>
-          <li><b>Money</b><span>Holdings, bills, alerts</span></li>
-          <li><b>Private</b><span>Human approved actions</span></li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="panel" aria-label="Form intake memory sources">
-      <div class="panel-head">
-        <h2>Form Intake Memory</h2>
-        <span class="signal">Connected Sources</span>
-      </div>
-      <div class="source-grid">
-        <article class="source-card" style="--lane: var(--gold);">
-          <small>OWNYOURWEB Source</small>
-          <h3>Project Request Form</h3>
-          <p>Website leads, project notes, timeline, business details, and current-site links should originate from the live OWNYOURWEB form. The dashboard stores the memory trail and turns each valid submission into a project card.</p>
-          <ul class="lane-list">
-            <li><b>Origin</b><span>ownyourweb.xyz</span></li>
-            <li><b>Memory</b><span>website intake + build queue</span></li>
-            <li><b>Route</b><span>OWNYOURWEB -> review -> project</span></li>
-          </ul>
-          <a href="https://ownyourweb.xyz/" target="_blank" rel="noreferrer">Open Form Source</a>
-        </article>
-
-        <article class="source-card" style="--lane: var(--red);">
-          <small>SHOPNASGFX Source</small>
-          <h3>Book / Contact Flow</h3>
-          <p>Design orders, booking details, contact requests, assets, and client notes should originate from SHOPNASGFX site actions. The dashboard keeps the memory trail and routes the job into draft, revision, approval, and delivery.</p>
-          <ul class="lane-list">
-            <li><b>Origin</b><span>shopnasgfx.com</span></li>
-            <li><b>Memory</b><span>design intake + asset queue</span></li>
-            <li><b>Route</b><span>SHOPNASGFX -> assets -> draft</span></li>
-          </ul>
-          <a href="https://shopnasgfx.com/" target="_blank" rel="noreferrer">Open Form Source</a>
-        </article>
+    <section>
+      <div class="eyebrow">OWNYOURWEB / SHOPNASGFX</div>
+      <h1><span>Project</span><span>Intake</span></h1>
+      <p>This page is for confirmed paid clients. Use the form to send your project details, files, links, deadlines, and notes so we can review everything and follow up with the next step.</p>
+      <div class="actions">
+        <a class="primary" href="paid-client-form.html">Open Paid Client Form</a>
+        <a href="https://ownyourweb.xyz/">OWNYOURWEB</a>
+        <a href="https://shopnasgfx.com/">SHOPNASGFX</a>
       </div>
     </section>
-
-    <section class="panel" id="paid-client-queue" aria-label="Paid client intake queue">
-      <div class="panel-head">
-        <h2>Paid Client Queue</h2>
-        <a class="action" href="paid-client-form.html">Open Paid Form</a>
-      </div>
-      <div class="task-board" id="paidClientQueue">
-        <article class="task">
-          <span class="tag" style="--tag: var(--gold);">READY</span>
-          <p>Paid client submissions from the dedicated form will appear here after submission.</p>
-          <small>Paid Form -> Dashboard Memory</small>
-        </article>
-      </div>
-    </section>
-
-    <section class="ops-grid" id="intake">
-      <div class="panel">
-        <div class="panel-head">
-          <h2>Universal Intake</h2>
-          <span class="signal">Manual Fallback</span>
-        </div>
-        <form class="intake-form">
-          <div class="form-row">
-            <div class="field">
-              <label for="lane">Lane</label>
-              <select id="lane" name="lane">
-                <option>OWNYOURWEB</option>
-                <option>SHOPNASGFX</option>
-                <option>INNERGINTEL</option>
-                <option>PERSONAL</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="source">Source</label>
-              <select id="source" name="source">
-                <option>Live Site Form</option>
-                <option>Manual Dashboard Entry</option>
-                <option>Telegram Capture</option>
-                <option>Client Message</option>
-                <option>Private Note</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="requestType">Request Type</label>
-              <select id="requestType" name="requestType">
-                <option>Order</option>
-                <option>Form</option>
-                <option>Project</option>
-                <option>Date</option>
-                <option>Update</option>
-                <option>Personal</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label for="title">Title</label>
-            <input id="title" name="title" placeholder="Client site, logo order, class date, family note">
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="priority">Priority</label>
-              <select id="priority" name="priority">
-                <option>Normal</option>
-                <option>High</option>
-                <option>Urgent</option>
-                <option>Waiting</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="dueDate">Due Date</label>
-              <input id="dueDate" name="dueDate" type="date">
-            </div>
-          </div>
-          <div class="field">
-            <label for="notes">Notes</label>
-            <textarea id="notes" name="notes" placeholder="Important details, links, deliverables, budget, assets, approval needs"></textarea>
-          </div>
-          <button class="primary-button" type="button">Prepare Command Card</button>
-        </form>
-      </div>
-
-      <div class="panel">
-        <div class="panel-head">
-          <h2>Project Board</h2>
-          <span class="signal">Synced</span>
-        </div>
-        <div class="task-board" aria-label="Project management columns">
-          <div class="task-column">
-            <h3>Capture</h3>
-            <article class="task">
-              <span class="tag" style="--tag: var(--gold);">OWNYOURWEB</span>
-              <p>New website requests come from ownyourweb.xyz, then become memory records with business basics, goal, current URL, and launch target.</p>
-              <small>Site Form -> Memory -> Review</small>
-            </article>
-            <article class="task">
-              <span class="tag" style="--tag: var(--green);">PERSONAL</span>
-              <p>Family, life admin, bills, and investment notes enter private review before any action.</p>
-              <small>Private -> Confirm</small>
-            </article>
-          </div>
-          <div class="task-column">
-            <h3>Build</h3>
-            <article class="task">
-              <span class="tag" style="--tag: var(--red);">SHOPNASGFX</span>
-              <p>Design jobs come from shopnasgfx.com booking/contact flow, then move through asset collection, draft, revision, and delivery.</p>
-              <small>Site Form -> Memory -> Draft</small>
-            </article>
-            <article class="task">
-              <span class="tag" style="--tag: var(--blue);">INNERGINTEL</span>
-              <p>System updates, skills, classes, and important dates stay connected to the repo and ops channel.</p>
-              <small>Repo -> Ops Update</small>
-            </article>
-          </div>
-          <div class="task-column">
-            <h3>Execute</h3>
-            <article class="task">
-              <span class="tag" style="--tag: var(--teal);">SECURITY</span>
-              <p>Before launch: permissions, secrets, forms, rate limits, logs, backups, and recovery path are checked.</p>
-              <small>Verify -> Deploy</small>
-            </article>
-            <article class="task">
-              <span class="tag" style="--tag: var(--violet);">REPORT</span>
-              <p>Every meaningful change gets a short update with links, status, owner, and next action.</p>
-              <small>Log -> Notify</small>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel-head">
-        <h2>Dates + Updates</h2>
-        <span class="signal">Calendar Layer</span>
-      </div>
-      <div class="timeline" aria-label="Important timeline lanes">
-        <article class="timeline-item">
-          <small>Orders</small>
-          <strong>Client Delivery Dates</strong>
-          <p>Track website launches, graphic deadlines, revisions, invoices, and final handoffs.</p>
-        </article>
-        <article class="timeline-item">
-          <small>Classes</small>
-          <strong>Learning Schedule</strong>
-          <p>Keep class dates, assignments, resources, and follow-up work inside INNERGINTEL.</p>
-        </article>
-        <article class="timeline-item">
-          <small>Ops</small>
-          <strong>System Updates</strong>
-          <p>Record new repos, deployed pages, automation changes, production checks, and channel posts.</p>
-        </article>
-        <article class="timeline-item">
-          <small>Private</small>
-          <strong>Personal Review</strong>
-          <p>Separate personal priorities, family items, and investments from client-facing operations.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel-head">
-        <h2>Security To Execution</h2>
-        <span class="signal">Full Stack</span>
-      </div>
-      <div class="stack-grid" aria-label="Production stack coverage">
-        <div class="stack-layer"><strong>Frontend</strong><span>Covered</span></div>
-        <div class="stack-layer"><strong>APIs</strong><span>Planned</span></div>
-        <div class="stack-layer"><strong>Database</strong><span>Planned</span></div>
-        <div class="stack-layer"><strong>Auth</strong><span>Planned</span></div>
-        <div class="stack-layer"><strong>Hosting</strong><span>Partial</span></div>
-        <div class="stack-layer"><strong>Cloud</strong><span>Planned</span></div>
-        <div class="stack-layer"><strong>CI/CD</strong><span>Partial</span></div>
-        <div class="stack-layer"><strong>Security</strong><span>Partial</span></div>
-        <div class="stack-layer"><strong>Rate Limits</strong><span>Planned</span></div>
-        <div class="stack-layer"><strong>CDN</strong><span>Planned</span></div>
-        <div class="stack-layer"><strong>Scaling</strong><span>Future</span></div>
-        <div class="stack-layer"><strong>Logs</strong><span>Planned</span></div>
-        <div class="stack-layer"><strong>Recovery</strong><span>Planned</span></div>
-      </div>
-    </section>
-
-    <footer>
-      <strong>OWNYOURWEB x SHOPNASGFX x INNERGINTEL x PERSONAL</strong>
-      <span>Capture -> Build -> Verify -> Deploy -> Notify -> Document</span>
-    </footer>
   </main>
-
-  <script>
-    const lanes = {
-      ownyourweb: {
-        name: "OWNYOURWEB",
-        color: "var(--gold)",
-        summary: "Website orders, intake forms, client project boards, launch checklists, domains, hosting, and delivery updates.",
-        primary: "Orders",
-        form: "Website Intake",
-        review: "Mobile QA"
-      },
-      shopnasgfx: {
-        name: "SHOPNASGFX",
-        color: "var(--red)",
-        summary: "Design orders, brand briefs, asset uploads, draft approvals, revision rounds, invoices, and delivery tracking.",
-        primary: "Design Jobs",
-        form: "Creative Brief",
-        review: "Client Approval"
-      },
-      innergintel: {
-        name: "INNERGINTEL",
-        color: "var(--blue)",
-        summary: "Project management, important details, dates, classes, repo updates, system rules, skills, and ops reporting.",
-        primary: "Projects",
-        form: "System Update",
-        review: "Ops Channel"
-      },
-      personal: {
-        name: "PERSONAL",
-        color: "var(--green)",
-        summary: "Life admin, family details, non-work reminders, investment watchlists, private notes, and human-approved actions.",
-        primary: "Life",
-        form: "Private Note",
-        review: "Human Confirm"
-      }
-    };
-
-    const buttons = Array.from(document.querySelectorAll(".lane-button"));
-    const readout = document.querySelector("#activeReadout");
-    const laneSelect = document.querySelector("#lane");
-    const cycleLane = document.querySelector("#cycleLane");
-    const paidClientQueue = document.querySelector("#paidClientQueue");
-    let activeIndex = 0;
-
-    function setLane(key) {
-      const lane = lanes[key];
-      activeIndex = buttons.findIndex((button) => button.dataset.lane === key);
-      buttons.forEach((button) => button.classList.toggle("active", button.dataset.lane === key));
-      readout.style.setProperty("--lane", lane.color);
-      readout.innerHTML = `
-        <small>Active Lane</small>
-        <h2>${lane.name}</h2>
-        <p>${lane.summary}</p>
-        <div class="readout-grid">
-          <div><small>Primary</small><strong>${lane.primary}</strong></div>
-          <div><small>Form</small><strong>${lane.form}</strong></div>
-          <div><small>Review</small><strong>${lane.review}</strong></div>
-        </div>
-      `;
-      laneSelect.value = lane.name;
-    }
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => setLane(button.dataset.lane));
-    });
-
-    cycleLane.addEventListener("click", () => {
-      const next = buttons[(activeIndex + 1) % buttons.length];
-      setLane(next.dataset.lane);
-    });
-
-    function readPaidClientIntakes() {
-      try {
-        return JSON.parse(localStorage.getItem("innerg_paid_client_intakes") || "[]");
-      } catch (error) {
-        return [];
-      }
-    }
-
-    function renderPaidClientQueue() {
-      const intakes = readPaidClientIntakes();
-      if (!paidClientQueue || !intakes.length) return;
-
-      paidClientQueue.innerHTML = intakes.slice(0, 6).map((intake) => `
-        <article class="task">
-          <span class="tag" style="--tag: ${intake.lane === "SHOPNASGFX" ? "var(--red)" : "var(--gold)"};">${intake.lane}</span>
-          <p><strong>${intake.clientName || "Paid Client"}</strong> - ${intake.projectTitle || intake.service || "New paid project"}</p>
-          <small>${intake.status || "Paid Intake"} -> ${intake.priority || "Review"} -> ${intake.dueDate || "No date set"}</small>
-        </article>
-      `).join("");
-    }
-
-    renderPaidClientQueue();
-  </script>
 </body>
 </html>

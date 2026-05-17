@@ -19,7 +19,7 @@ See [docs/ecosystem-map.md](docs/ecosystem-map.md).
 
 Client intake for OWNYOURWEB and SHOPNASGFX starts on the live sites, then routes into dashboard memory and project management. See [docs/form-intake-memory.md](docs/form-intake-memory.md).
 
-Paid clients use the dedicated [paid client form](docs/paid-client-form.html), which routes submissions into the dashboard paid-client queue.
+Paid clients use the dedicated [paid client form](docs/paid-client-form.html) for project details, links, assets, deadlines, and notes.
 
 ## Core Idea
 

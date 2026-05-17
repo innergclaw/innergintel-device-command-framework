@@ -100,5 +100,4 @@ That form captures:
 - links and assets
 - project notes
 
-On a static GitHub Pages deployment, the form stores the newest paid submissions in browser storage and returns to the dashboard paid-client queue. When a backend is added, this page should post to the production intake database and then update the dashboard from that source of truth.
-
+On a static GitHub Pages deployment, the form can show a thank-you screen after submission. When a backend is added, this page should post to the production intake database and update the internal dashboard from that source of truth.

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paid Client Intake / InnerG Intel Command OS</title>
-  <meta name="description" content="Paid client intake form for OWNYOURWEB and SHOPNASGFX projects.">
+  <title>Paid Client Intake</title>
+  <meta name="description" content="Paid client project intake form for OWNYOURWEB and SHOPNASGFX.">
   <style>
     :root {
       color-scheme: dark;
@@ -216,13 +216,12 @@
   <main>
     <header class="topbar">
       <div class="brand"><span class="mark">IG</span> Paid Client Intake</div>
-      <a href="index.html#paid-client-queue">Back To Dashboard</a>
     </header>
 
     <section class="hero">
-      <div class="eyebrow">Paid client only / form to dashboard memory</div>
+      <div class="eyebrow">Paid client only</div>
       <h1><span>Paid</span><span>Client</span><span>Intake</span></h1>
-      <p>This form is for confirmed paid clients. Submissions route into the Command OS paid-client queue for OWNYOURWEB or SHOPNASGFX project management.</p>
+      <p>This form is for confirmed paid clients. Please add the project details, links, files, deadlines, and anything needed to start or continue your project.</p>
     </section>
 
     <section class="panel">
@@ -297,12 +296,15 @@
           </div>
         </div>
         <div class="actions">
-          <button class="primary" type="submit">Send To Dashboard</button>
+          <button class="primary" type="submit">Submit Intake</button>
           <button type="reset">Clear Form</button>
-          <a href="index.html#paid-client-queue">Dashboard Queue</a>
         </div>
-        <div class="notice" id="notice">Saved. Sending this paid client to the dashboard queue.</div>
+        <div class="notice" id="notice">Thank you. Your project details were submitted.</div>
       </form>
+      <section class="notice" id="thankYou" aria-live="polite">
+        <h2>Thank You</h2>
+        <p>Your paid client intake has been received. We will review your project details and follow up with the next step.</p>
+      </section>
     </section>
   </main>
 
@@ -322,11 +324,10 @@
 
       const existing = JSON.parse(localStorage.getItem("innerg_paid_client_intakes") || "[]");
       localStorage.setItem("innerg_paid_client_intakes", JSON.stringify([intake, ...existing].slice(0, 25)));
+      form.reset();
       notice.style.display = "block";
-
-      setTimeout(() => {
-        window.location.href = "index.html#paid-client-queue";
-      }, 700);
+      document.querySelector("#thankYou").style.display = "block";
+      document.querySelector("#thankYou").scrollIntoView({ behavior: "smooth", block: "start" });
     });
   </script>
 </body>
