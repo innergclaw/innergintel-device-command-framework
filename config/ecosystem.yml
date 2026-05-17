@@ -134,6 +134,15 @@ shared_objects:
   - approval
 
 intake_memory_rules:
+  paid_client_form:
+    path: paid-client-form.html
+    dashboard_queue: paid-client-queue
+    source_of_truth: confirmed paid client submission
+    current_storage: browser localStorage
+    future_storage: production intake database
+    allowed_lanes:
+      - OWNYOURWEB
+      - SHOPNASGFX
   ownyourweb:
     source_of_truth: live OWNYOURWEB Project Request form
     dashboard_role: review and project management

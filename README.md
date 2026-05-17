@@ -19,6 +19,8 @@ See [docs/ecosystem-map.md](docs/ecosystem-map.md).
 
 Client intake for OWNYOURWEB and SHOPNASGFX starts on the live sites, then routes into dashboard memory and project management. See [docs/form-intake-memory.md](docs/form-intake-memory.md).
 
+Paid clients use the dedicated [paid client form](docs/paid-client-form.html), which routes submissions into the dashboard paid-client queue.
+
 ## Core Idea
 
 InnerG Intel runs like a small command network:
@@ -106,7 +108,8 @@ innergintel-device-command-framework/
 │   ├── production-stack.md
 │   └── workflows.md
 ├── dashboard/
-│   └── index.html
+│   ├── index.html
+│   └── paid-client-form.html
 └── scripts/
     └── print-command-map.py
 ```

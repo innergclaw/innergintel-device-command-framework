@@ -81,3 +81,24 @@ Manual dashboard intake is only for:
 
 Manual entry should not replace the OWNYOURWEB or SHOPNASGFX site forms as the normal source of client intake.
 
+## Paid Client Form
+
+Confirmed paid clients should use `paid-client-form.html`.
+
+That form captures:
+
+- business lane
+- payment status
+- client name
+- email
+- phone or contact handle
+- service
+- project title
+- due date
+- priority
+- paid amount or package
+- links and assets
+- project notes
+
+On a static GitHub Pages deployment, the form stores the newest paid submissions in browser storage and returns to the dashboard paid-client queue. When a backend is added, this page should post to the production intake database and then update the dashboard from that source of truth.
+

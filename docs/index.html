@@ -750,7 +750,7 @@
         <a href="#innergintel">INNERGINTEL</a>
         <a href="#personal">PERSONAL</a>
       </nav>
-      <a class="action" href="#intake">New Intake</a>
+      <a class="action" href="paid-client-form.html">Paid Client Form</a>
     </header>
 
     <section class="hero" id="top">
@@ -876,6 +876,20 @@
             <li><b>Route</b><span>SHOPNASGFX -> assets -> draft</span></li>
           </ul>
           <a href="https://shopnasgfx.com/" target="_blank" rel="noreferrer">Open Form Source</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="paid-client-queue" aria-label="Paid client intake queue">
+      <div class="panel-head">
+        <h2>Paid Client Queue</h2>
+        <a class="action" href="paid-client-form.html">Open Paid Form</a>
+      </div>
+      <div class="task-board" id="paidClientQueue">
+        <article class="task">
+          <span class="tag" style="--tag: var(--gold);">READY</span>
+          <p>Paid client submissions from the dedicated form will appear here after submission.</p>
+          <small>Paid Form -> Dashboard Memory</small>
         </article>
       </div>
     </section>
@@ -1094,6 +1108,7 @@
     const readout = document.querySelector("#activeReadout");
     const laneSelect = document.querySelector("#lane");
     const cycleLane = document.querySelector("#cycleLane");
+    const paidClientQueue = document.querySelector("#paidClientQueue");
     let activeIndex = 0;
 
     function setLane(key) {
@@ -1122,6 +1137,29 @@
       const next = buttons[(activeIndex + 1) % buttons.length];
       setLane(next.dataset.lane);
     });
+
+    function readPaidClientIntakes() {
+      try {
+        return JSON.parse(localStorage.getItem("innerg_paid_client_intakes") || "[]");
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function renderPaidClientQueue() {
+      const intakes = readPaidClientIntakes();
+      if (!paidClientQueue || !intakes.length) return;
+
+      paidClientQueue.innerHTML = intakes.slice(0, 6).map((intake) => `
+        <article class="task">
+          <span class="tag" style="--tag: ${intake.lane === "SHOPNASGFX" ? "var(--red)" : "var(--gold)"};">${intake.lane}</span>
+          <p><strong>${intake.clientName || "Paid Client"}</strong> - ${intake.projectTitle || intake.service || "New paid project"}</p>
+          <small>${intake.status || "Paid Intake"} -> ${intake.priority || "Review"} -> ${intake.dueDate || "No date set"}</small>
+        </article>
+      `).join("");
+    }
+
+    renderPaidClientQueue();
   </script>
 </body>
 </html>
